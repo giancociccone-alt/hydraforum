@@ -95,7 +95,7 @@ function aceptarAmigo(e){
             }
     )
         .then((response) => response.json())
-        .then(console.log('chido'))
+        .then(window.location.reload())
         .catch(console.log);
 }
 
@@ -126,6 +126,6 @@ function rechazarUsuario(e){
             }
     )
         .then((response) => response.json())
-        .then(console.log('chido'))
+        .then(window.location.reload())
         .catch(console.log);
 }

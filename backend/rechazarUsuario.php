@@ -12,26 +12,26 @@
 
         $datosAmistad = preg_split("/[,]+/",$content);
 
-        $amigoSeleccionado = $datosAmistad[0];
+        $eliminarAmigoSeleccionado = $datosAmistad[0];
         $usuario = $datosAmistad[1];
 
     }
 
-    $sql = 'UPDATE amigos set estado ="RECHAZADO" WHERE emisor = :emisor AND receptor = :receptor';
+    $sql = 'DELETE FROM amigos WHERE emisor = :emisor AND receptor = :receptor';
 
     $result = $conexion->prepare($sql);
     $result->execute(array(
-        ':receptor' => $amigoSeleccionado,
+        ':receptor' => $eliminarAmigoSeleccionado,
         ':emisor' => $usuario
     ));
     
     if($result->rowCount() > 0){
 
-        $sql = 'UPDATE amigos set estado ="RECHAZADO" WHERE emisor = :emisor AND receptor = :receptor';
+        $sql = 'DELETE FROM amigos WHERE emisor = :emisor AND receptor = :receptor';
 
         $result = $conexion->prepare($sql);
         $result->execute(array(
-            ':emisor' => $amigoSeleccionado,
+            ':emisor' => $eliminarAmigoSeleccionado,
             ':receptor' => $usuario
         ));
 
@@ -41,21 +41,21 @@
         }
 
     }else{
-        $sql = 'UPDATE amigos set estado ="RECHAZADO" WHERE emisor = :emisor AND receptor = :receptor';
+        $sql = 'DELETE FROM amigos WHERE emisor = :emisor AND receptor = :receptor';
 
         $result = $conexion->prepare($sql);
         $result->execute(array(
             ':receptor' => $usuario,
-            ':emisor' => $amigoSeleccionado
+            ':emisor' => $eliminarAmigoSeleccionado
         ));
 
         if ($result->fetch()) {
 
-            $sql = 'UPDATE amigos set estado ="RECHAZADO" WHERE emisor = :emisor AND receptor = :receptor';
+            $sql = 'DELETE FROM amigos WHERE emisor = :emisor AND receptor = :receptor';
 
             $result = $conexion->prepare($sql);
             $result->execute(array(
-                ':receptor' => $amigoSeleccionado,
+                ':receptor' => $eliminarAmigoSeleccionado,
                 ':emisor' => $usuario
             ));
 

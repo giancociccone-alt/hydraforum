@@ -19,6 +19,7 @@
         FROM amigos
         WHERE emisor = :username OR receptor = :username
     )';
+
     $resultado = $conexion->prepare($sql);
     $resultado->execute(array(':username' => $usuario));
     

@@ -47,57 +47,17 @@ function mostrandoUsuarios({usuarios}){
         let pEstadoAmistad = document.createElement('p');
         div.appendChild(pEstadoAmistad);
 
-        if(estadoAmistad == "ACEPTADO"){
-            let textEstadoAmistad = document.createTextNode('AMIGOS');
-            pEstadoAmistad.appendChild(textEstadoAmistad);
+        let textEstadoAmistad = document.createTextNode('DESCONOCIDOS');
+        pEstadoAmistad.appendChild(textEstadoAmistad);
 
-            let chatAmigo = document.createElement('input');
-            chatAmigo.setAttribute('type','button');
-            chatAmigo.setAttribute('id',usuario);
-            chatAmigo.setAttribute('value','enviarMensaje');
-            // chatAmigo.addEventListener('click',chatAmigo);
-            div.appendChild(chatAmigo);
+        let agregarUsuario = document.createElement('input');
+        agregarUsuario.setAttribute('type','button');
+        agregarUsuario.setAttribute('id',usuario);
+        agregarUsuario.setAttribute('name',usuario);
+        agregarUsuario.setAttribute('value','agregar Usuario');
+        agregarUsuario.addEventListener('click',solicitudAmistad);
+        div.appendChild(agregarUsuario);
 
-            let eliminarAmigo = document.createElement('input');
-            eliminarAmigo.setAttribute('type','button');
-            eliminarAmigo.setAttribute('id',usuario);
-            eliminarAmigo.setAttribute('name',usuario);
-            eliminarAmigo.setAttribute('value','eliminarAmistad');
-            eliminarAmigo.addEventListener('click',eliminarAmistad);
-            div.appendChild(eliminarAmigo);
-
-        }
-        // else if(estadoAmistad == "PENDIENTE"){
-
-        //     let textEstadoAmistad = document.createTextNode('PENDIENTE');
-        //     pEstadoAmistad.appendChild(textEstadoAmistad);
-
-        //     let botonAceptar = document.createElement('input');
-        //     botonAceptar.setAttribute('type','button');
-        //     botonAceptar.setAttribute('id',usuario);
-        //     botonAceptar.setAttribute('value','ACEPTADO');
-        //     botonAceptar.addEventListener('click',aceptarAmigo);
-        //     div.appendChild(botonAceptar);
-
-        //     let botonRechazar = document.createElement('input');
-        //     botonRechazar.setAttribute('type','button');
-        //     botonRechazar.setAttribute('id',usuario);
-        //     botonRechazar.setAttribute('value','RECHAZADO');
-        //     botonRechazar.addEventListener('click',rechazarUsuario);
-        //     div.appendChild(botonRechazar);
-
-        // }else{
-        //     let textEstadoAmistad = document.createTextNode('DESCONOCIDO');
-        //     pEstadoAmistad.appendChild(textEstadoAmistad);
-
-        //     let agregarAmigo = document.createElement('input');
-        //     agregarAmigo.setAttribute('type','button');
-        //     agregarAmigo.setAttribute('id',usuario);
-        //     agregarAmigo.setAttribute('value','agregarAmigo');
-        //     agregarAmigo.addEventListener('click',solicitudAmistad);
-        //     div.appendChild(agregarAmigo);
-        // }
-        
     });
 
 }
@@ -129,6 +89,6 @@ function solicitudAmistad(e){
             }
     )
         .then((response) => response.json())
-        .then(console.log('chido'))
+        .then(window.location.reload())
         .catch(console.log);
 }
