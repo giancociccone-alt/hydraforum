@@ -1,0 +1,89 @@
+.switch {
+    background-color: #343D5B;
+    border-radius: 1000px;
+    border: none;
+    position: relative;
+    cursor: pointer;
+    outline: none;
+    display: flex;
+}
+
+.switch::after {
+    content: "";
+    display: block;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    background-color: #F1F1F1;
+    border-radius: 100px;
+    left: 0;
+    right: unset;
+}
+
+.switch.active {
+    background-color: #98FF98;
+    color: #000000;
+}
+
+.switch.active::after {
+    right: 0;
+    left: unset;
+}
+
+.switch div img{
+    width: 30px;
+    height: 30px;
+    display: block;
+    color: #FFFFFF;
+}
+
+/*=========================
+============AYUDA==========
+===========================
+*/
+
+body.dark .preguntas{
+    transition: all .3s ease;
+    background-color: #000;
+}
+
+body.dark .pregunta{
+    color: #FFF;
+}
+
+body.dark .respuesta{
+    color: #b1b1b1;
+}
+
+body.dark .svgSuma{
+    fill: #FFFFFF;
+}
+
+/*=====================
+=====CREAR ENTRADA=====
+=======================*/
+
+body.dark .background-formulario article .titulo {
+    transition: all .3s ease;
+    color: white;
+}
+
+body.dark .formulario input[type="submit"]{
+    transition: all .3s ease;
+    background-color: #000;
+    color: white;
+}
+
+body.dark .formulario input[type="text"]{
+    transition: all .3s ease;
+    background-color: #000;
+    color: #fff;
+}
+
+body.dark .formulario input[type="text"]:focus{
+    border: 2.5px solid #fff;
+}
+
+body.dark .formulario input[type="text"]::placeholder{
+    color: #fff;
+}

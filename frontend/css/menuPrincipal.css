@@ -1,0 +1,126 @@
+:root{
+    --font-family: Arial, Helvetica, sans-serif;
+    --font-size-main: 18px;
+    --font-size-text: 16px;
+    --font-size-title: 1.5em;
+    --color-white: #FFFFFF;
+    --color-black: #000000;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    min-height: 100vh;
+    background: url(../imagenes/main.jpg) no-repeat center center fixed;
+    background-size: cover;
+}
+
+.difuminado{
+    height: 100px;
+    min-width: 100%;
+    position: absolute;
+    background: url(../imagenes/main.jpg) no-repeat center center fixed;
+    background-size: cover;
+    filter: blur(5px);
+}
+
+.transparencia{
+    position: relative;
+    height: 100px;
+    max-width: 100%;
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+nav>ul>div>li>a{
+    color: var(--color-white);
+    font-family: var(--font-family);
+    font-size: var(--font-size-main);
+    text-decoration: none;
+}
+
+ul{
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-areas: "general . user";
+}
+
+li{
+    list-style: none;
+    position: relative;
+}
+
+.general{
+    grid-area: general;
+    
+}
+
+.user{
+    grid-area: user;
+    gap: 30px;
+}
+
+.caja{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+/*========================
+=======SUB MENU===========
+==========================*/
+
+li a{
+    text-decoration: none;
+    display: inline-block;
+    padding: 5px 8px;
+    color: var(--color-white);
+    font-family: var(--font-family);
+    font-size: var(--font-size-main);
+}
+
+nav li ul{
+    display: none;
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+nav li:hover ul{
+    display: block;
+}
+
+/*=======================
+====BUSQUEDA USUARIO=====
+=========================*/
+
+.input-lupa .input-busquedaUsuario::-webkit-calendar-picker-indicator {
+    display: none;
+}
+
+.input-lupa {
+    background-image: url('../imagenes/camara.png');
+    background-repeat: no-repeat;
+    background-position: 4px center;
+    background-size: 20px;
+    display: flex;
+    align-items: center;
+    width: 175px;
+    padding-left: 28px;
+    height: 30px;
+    border-radius: 3px;
+}
+
+.input-lupa .input-busquedaUsuario {
+    width: 100%;
+    font-size: 0.9em;
+    border: none;
+    border-radius: 2px;
+    height: 29px;
+}
+
+.input-lupa .input-busquedaUsuario:focus {
+    outline: none;
+}

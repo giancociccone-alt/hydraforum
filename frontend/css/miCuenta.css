@@ -1,0 +1,108 @@
+.miBlog{
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 30px;
+    width: 160px;
+}
+
+.miBlog a{
+    color: #fff;
+    font-family: var(--font-family);
+    font-size: var(--font-size-main);
+    text-decoration: none;
+}
+
+/*================================
+===========ARTICULOS==============
+==================================*/
+
+.ubicar{
+    max-width: 50%;
+    margin: 40px auto;
+    background-color: rgba(255, 255, 255, 0.15);
+    color: white;
+}
+
+.ubicar .background{
+    padding: 40px;
+    display: flex;
+    justify-content: space-between;
+    display: grid;
+    gap: 20px;
+    display: grid;
+    grid-template-areas: "imagen titulo fecha tresPuntos"
+                            "imagen descripcion descripcion descripcion";
+}
+
+.imagen{
+    grid-area: imagen;
+    position: relative;
+    top: 15px;
+    height: 100px;
+    width: 100px;
+}
+
+.titulo{
+    grid-area: titulo;
+    /* width: 200px; */
+}
+
+.fecha{
+    grid-area: fecha;
+}
+
+.tresPuntos{
+    grid-area: tresPuntos;
+}
+
+.descripcion{
+    grid-area: descripcion;
+}
+
+/*========================
+=========tresPuntos=======
+==========================*/
+
+/* #tresPuntos{
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background-color: transparent;
+    max-width: 100px;
+    position: relative;
+} */
+/* REVISAR ESTO */
+/* #tresPuntos img{
+    fill: white;
+}
+
+#tresPuntos ul{
+    display: none;
+    position: absolute;
+    top: 25px;
+    left: -50px;
+}
+
+#tresPuntos ul li{
+    margin: 10px;
+}
+
+#tresPuntos ul a{
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+    padding: 10px;
+    color: #000;
+}
+
+#tresPuntos ul a:hover{
+    background-color: #D8D8D8;
+}
+
+#tresPuntos.active ul{
+    list-style: none;
+    display: block;
+} */
+
+/*===============================
+========BUSQUEDA ARTICULOS=======
+=================================*/

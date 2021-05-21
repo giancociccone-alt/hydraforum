@@ -1,0 +1,101 @@
+:root{
+    --font-family: Arial, Helvetica, sans-serif;
+    --font-size-main: 18px;
+    --font-size-text: 16px;
+    --font-size-title: 1.5em;
+    --color-white: #FFFFFF;
+    --color-black: #000000;
+}
+
+/*=====================
+=====CREAR ENTRADA=====
+=======================*/
+.container {
+	max-width: 1000px;
+	width: 90%;
+	margin: auto;
+}
+
+.background-formulario {
+    transition: all .3s ease;
+	width: 100%;
+	background-color: rgba(255, 255, 255, 0.15);
+	box-shadow: 0px 0px 5px rgba(0,0,0, .5);
+	margin: 30px 0 30px 0;
+	padding: 30px;
+}
+
+.background-formulario article .titulo {
+	font-size: 28px;
+	margin-bottom: 10px;
+}
+
+.formulario input[type="text"] {
+    transition: all .3s ease;
+    outline: none;
+	border: 1px solid #A8A8A8;
+	border-radius: 2.5px;
+	padding: 16px;
+	width: 96.5%;
+	display: block;
+	margin-bottom:20px;
+	font-size: 16px;
+}
+
+.formulario input[type="text"]:focus {
+	border: 2.5px solid #525252;
+	padding: 15px;
+}
+
+.formulario textarea {
+	max-width: 100%;
+	min-width: 100%;
+	min-height: 300px;
+    max-height: 300px;
+}
+
+.formulario input[type="submit"]{
+    transition: all .3s ease;
+	padding: 15px;
+	background: #fff;
+	color:#000;
+	font-size: 16px;
+	border-radius: 5px;
+	border:none;
+	cursor: pointer;
+    margin: 10px 0 0 0;
+}
+
+/* CRAZY*/
+.fileImage {
+    display: none;
+}
+
+.contenedorImagen {
+    border: 1px solid #ccc;
+    width: 300px;
+    position: relative;
+    height: 30px;
+    display: flex;
+}
+
+.contenedorImagen .mostrarNombreImagen{
+    position: absolute;
+    right: 0;
+    width: 250px;
+    padding: 5px;
+    line-height: 25px;
+    font-family: sans-serif;
+    font-size: 16px;
+}
+
+.contenedorImagen label {
+    cursor: pointer;
+    margin: 0;
+    width: 40px;
+    height: 30px;
+    position: absolute;
+    left: 0;
+    background: #FFF url('../imagenes/camara.svg') no-repeat center;
+    /* background: #FFF url('.././imagenes/camara.svg') no-repeat center; */
+}

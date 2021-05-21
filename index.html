@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./frontend/css/index.css">
+    <link rel="stylesheet" href="./frontend/css/notificaciones.css">
+    <link rel="stylesheet" href="./frontend/css/menuPrincipal.css">
+</head>
+<body>
+
+    <div class="difuminado">
+    </div>
+    <div class="transparencia">
+        <nav>
+            <ul>
+                <div class="caja general">
+                    <li><a href="./index.html"><img src="./frontend/imagenes/logoHydra3.png" alt="logo hydraforum"></a></li>
+                    <li><a href="#2">FORO</a></li>
+                    <li><a href="./frontend/amigos.html" id="usuario">USUARIOS</a></li>
+                </div>
+                <div class="caja user">
+                    <li><a href="./frontend/ayuda.html">AYUDA</a></li>
+                    <li>
+                        <a id="miCuenta" href="./frontend/miCuenta.html">MI CUENTA</a>
+                        <ul>
+                            <li><a id="cerrarSesion" href="./index.html">CERRAR SESION</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <img src="./frontend/imagenes/alarm2.png" class="shake-rotate shake-freeze" style="height: 30px; width: 30px;">
+                        <!-- SELECT COUNT(leido) as notificaciones FROM mensajes WHERE id_usuario=$_SESSION['usuario'] AND leido=0  -->
+                        <div class="cantidad">
+                            <!-- YA QUE LE DIO CLICK A NOTIFICACIONES SE EJECUTRA LA SIGUENTE CONSULTA
+                            UPDATE FROM mensajes SET leido=1 WHERE leido=0  -->
+                            7
+                        </div>
+                        <div class="notificaciones" id="notificaciones">
+                            <ul>
+                                <li><a href="#">CHATS</a></li>
+                                <li><a href="#">PETICIONES DE AMISTAD</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </div>
+            </ul>
+        </nav>
+    </div>
+    
+    <!-- <main>
+        <div class="container">
+
+            <div class="mapa">
+                <iframe loading="lazy" style="height: 747px;width: 100%;" src="https://www.meteoblue.com/es/tiempo/maps/widget/madrid_espa%c3%b1a_3117735?windAnimation=0&windAnimation=1&gust=0&gust=1&satellite=0&satellite=1&coronaWeatherScore=0&coronaWeatherScore=1&geoloc=fixed&tempunit=C&windunit=km%252Fh&lengthunit=metric&zoom=5&autowidth=auto"  frameborder="0" scrolling="NO" allowtransparency="true" sandbox="allow-same-origin allow-scripts allow-popups allow-popups-to-escape-sandbox" style="width: 100%; height: 720px"></iframe><div><!-- DO NOT REMOVE THIS LINK --><a href="https://www.meteoblue.com/es/tiempo/webmap/beta/madrid_espa%c3%b1a_3117735?utm_source=weather_widget&utm_medium=linkus&utm_content=map&utm_campaign=Weather%2BWidget" target="_blank"></a></div>
+            <!-- </div>
+
+            <div class="tiempo" id="tyt_wdgt_1616161717473" style="overflow:hidden;width:182px;height:372px" data-options="color=azul&text=&content=1111110&temp_unit=c&wind_unit=kmh">
+                <script src="http://tiempoytemperatura.es/widgets/js/little-1dayb/2514891/tyt_wdgt_1616161717473/?v=0%22%3E"></script>
+            </div>
+            
+            <div class="video">
+                <iframe id="video_aemet" loading="lazy" name="video_aemet" src="https://www.aemet.es/es/videos" width="350" height="375" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" frameborder="0" scrolling="no">
+            </div>
+
+        </div>
+    </main> -->
+
+    <script src="./frontend/js/listaUsuarios.js"></script>
+    <script src="./frontend/js/cerrar_sesion.js"></script>
+
+    <script src="https://kit.fontawesome.com/ef546ce5ec.js" crossorigin="anonymous"></script>
+
+</body>
+</html>

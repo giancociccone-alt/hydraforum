@@ -1,0 +1,58 @@
+:root{
+    --font-family: Arial, Helvetica, sans-serif;
+    --font-size-main: 18px;
+    --font-size-text: 16px;
+    --font-size-title: 1.5em;
+    --color-white: #FFFFFF;
+    --color-black: #000000;
+}
+
+/*===========================================
+===========PREGUNTAS FRECUENTES==============
+=============================================*/
+
+main{
+    max-width: 50%;
+    margin: 40px auto;
+}
+
+.container{
+    display: grid;
+    gap: 20px;
+}
+
+.container.activo {
+    display: grid;
+}
+
+.preguntas {
+    transition: all .3s ease;
+    background: #dddddd;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.pregunta {
+    list-style-type: none;
+    outline: none; 
+    padding: 40px;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.respuesta {
+    line-height: 30px;
+    padding: 0 0 40px 40px;
+}
+
+.svgSuma{
+    fill: #000;
+}
+
+.pregunta.activa .svgSuma{
+    transform: rotate(45deg);
+}

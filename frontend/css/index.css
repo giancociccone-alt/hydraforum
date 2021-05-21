@@ -1,0 +1,32 @@
+:root{
+    --font-family: Arial, Helvetica, sans-serif;
+    --font-size-main: 18px;
+    --font-size-text: 16px;
+    --font-size-title: 1.5em;
+    --color-white: #FFFFFF;
+}
+
+main{
+    display: flex;
+    justify-content: center;
+}
+
+.container{
+    margin-top: 2.5em;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-areas: "mapa mapa video"
+                        "mapa mapa tiempo";
+}
+
+.mapa{
+    grid-area: mapa;
+}
+
+.video{
+    grid-area: video;
+}
+
+.tiempo{
+    grid-area: tiempo;
+}

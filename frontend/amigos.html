@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="./css/amigos.css">
+        <link rel="stylesheet" href="./css/darkmode.css">
+        <link rel="stylesheet" href="./css/notificaciones.css">
+        <link rel="stylesheet" href="./css/menuPrincipal.css">
+    </head>
+    <body>
+        
+        <div class="difuminado">
+        </div>
+        <div class="transparencia">
+            <nav>
+                <ul>
+                    <div class="caja general">
+                        <li><a href="../index.html"><img src="./imagenes/logoHydra3.png" alt="logo hydraforum"></a></li>
+                        <li><a href="#foro">FORO</a></li>
+                        <li><a href="./amigos.html" id="usuario">USUARIOS</a></li>
+                    </div>
+                    <div class="caja user">
+                        <li><a href="./ayuda.html">AYUDA</a></li>
+                        <li><a href="./miCuenta.html">MI CUENTA</a>
+                            <div class="background">
+                                <ul>
+                                    <li><a id="cerrarSesion" href="../index.html">CERRAR SESION</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li><img src="./imagenes/dragon.jpeg" style="height: 50px; width: 50px;"></li>
+                        <li>
+                            <img src="./imagenes/alarm2.png" class="shake-rotate shake-freeze" style="height: 30px; width: 30px;">
+                            <!-- SELECT COUNT(leido) as notificaciones FROM mensajes WHERE id_usuario=$_SESSION['usuario'] AND leido=0  -->
+                            <div class="cantidad">
+                                <!-- YA QUE LE DIO CLICK A NOTIFICACIONES SE EJECUTRA LA SIGUENTE CONSULTA
+                                UPDATE FROM mensajes SET leido=1 WHERE leido=0  -->
+                                7
+                            </div>
+                            <div class="notificaciones" id="notificaciones">
+                                <ul>
+                                    <li><a href="#">CHATS</a></li>
+                                    <li><a href="#">PETICIONES DE AMISTAD</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="boton">
+                                <button class="switch" id="switch">
+                                    <div>
+                                        <img src="./imagenes/sun.png">
+                                    </div>
+                                    <div>
+                                        <img src="./imagenes/crescent-moon.png">
+                                    </div>
+                                </button>
+                            </div>
+                        </li>
+                    </div>
+                </ul>
+            </nav>
+        </div>
+
+        <div id="amigos"><h3>AMISTADES</h3></div>
+        <div id="pendiente"><h3>PENDIENTES</h3></div>
+        <div id="usuarios"><h3>USUARIOS</h3></div>
+
+        <script src="./js/listaAmigo.js"></script>
+        <script src="./js/listaPendiente.js"></script>
+        <script src="./js/listaUsuarios.js"></script>
+        <script src="./js/cerrar_sesion.js"></script>
+        <script src="./js/darkmode.js"></script>
+
+        <script src="https://kit.fontawesome.com/ef546ce5ec.js" crossorigin="anonymous"></script>
+
+    </body>
+</html>
