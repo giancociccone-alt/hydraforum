@@ -14,7 +14,7 @@ window.addEventListener('DOMContentLoaded', function(){
 
     if(usuario){
 
-        const url = `/piton-4life/backend/listaPendiente.php?receptor=${usuario}`;
+        const url = `../backend/listaPendiente.php?receptor=${usuario}`;
 
         fetch(url)
             .then((response) => response.json())
@@ -49,7 +49,83 @@ function mostrandoAmigos( {usuarios} ){
 
         let textEstadoAmistad = document.createTextNode('PENDIENTE');
         pEstadoAmistad.appendChild(textEstadoAmistad);
+
+        let botonAceptar = document.createElement('input');
+        botonAceptar.setAttribute('type','button');
+        botonAceptar.setAttribute('id',usuario);
+        botonAceptar.setAttribute('value','ACEPTADO');
+        botonAceptar.addEventListener('click',aceptarAmigo);
+        div.appendChild(botonAceptar);
+
+        let botonRechazar = document.createElement('input');
+        botonRechazar.setAttribute('type','button');
+        botonRechazar.setAttribute('id',usuario);
+        botonRechazar.setAttribute('value','RECHAZADO');
+        botonRechazar.addEventListener('click',rechazarUsuario);
+        div.appendChild(botonRechazar);
         
     });
 
+}
+
+function aceptarAmigo(e){
+
+    var usuario = undefined;
+
+    usuario = localStorage.getItem('usuario');
+    if (!usuario) {
+        usuario = sessionStorage.getItem('usuario');
+        if (!usuario) {
+            document.querySelector('#usuario').addEventListener('click',function(e){
+                e.preventDefault();
+            });
+        }
+    }
+
+    const amigoSeleccionado = e.currentTarget.id;
+
+    let datosAmistad = [amigoSeleccionado, usuario];
+
+    const url = `../backend/aceptarAmigo.php`;
+    
+    fetch(url, {
+                method: 'POST',
+                body: datosAmistad,
+                headers:{'Content-Type': 'application/json'}
+            }
+    )
+        .then((response) => response.json())
+        .then(console.log('chido'))
+        .catch(console.log);
+}
+
+function rechazarUsuario(e){
+
+    var usuario = undefined;
+
+    usuario = localStorage.getItem('usuario');
+    if (!usuario) {
+        usuario = sessionStorage.getItem('usuario');
+        if (!usuario) {
+            document.querySelector('#usuario').addEventListener('click',function(e){
+                e.preventDefault();
+            });
+        }
+    }
+
+    const amigoSeleccionado = e.currentTarget.id;
+
+    let datosAmistad = [amigoSeleccionado, usuario];
+
+    const url = `../backend/rechazarUsuario.php`;
+    
+    fetch(url, {
+                method: 'POST',
+                body: datosAmistad,
+                headers:{'Content-Type': 'application/json'}
+            }
+    )
+        .then((response) => response.json())
+        .then(console.log('chido'))
+        .catch(console.log);
 }

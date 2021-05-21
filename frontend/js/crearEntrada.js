@@ -76,7 +76,7 @@ function crearEntrada(){
 
 function mandarDatosBaseDatos(dataArray){
     
-    const url = `/piton-4life/backend/insertarEntrada.php`;
+    const url = `../backend/insertarEntrada.php`;
 
     fetch(url, {
                     method: 'POST',

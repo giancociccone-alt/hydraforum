@@ -17,6 +17,18 @@
         $usuariosRegistrados[$indice] = [$fila['emisor'],$fila['estado']];
         $indice++;
     }
+
+    if($indice == 0){
+
+        $sql = 'SELECT receptor, estado FROM amigos WHERE emisor = :receptor AND estado = "ACEPTADO"';
+        $resultado = $conexion->prepare($sql);
+        $resultado->execute(array(':receptor' => $usuario));
+
+        while($fila = $resultado->fetch()){
+            $usuariosRegistrados[$indice] = [$fila['receptor'],$fila['estado']];
+            $indice++;
+        }
+    }
     
     if (empty($usuariosRegistrados)) {
         header('HTTP/ 400  No hay entradas disponibles');

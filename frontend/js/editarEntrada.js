@@ -3,7 +3,7 @@ if(localStorage.getItem('idEntrada')){
 
     const editarArticulo = localStorage.getItem('idEntrada');
 
-    const url = `/piton-4life/backend/datosEntrada.php?id_entrada=${editarArticulo}`;
+    const url = `../backend/datosEntrada.php?id_entrada=${editarArticulo}`;
     fetch(url)
         .then((response) => response.json())
         .then(mostrandoDatosEntrada)

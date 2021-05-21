@@ -8,7 +8,7 @@ if (!usuario) {
     }
 }
 
-const url = `/piton-4life/backend/conseguirEntrada.php?usuario=${usuario}`;
+const url = `../backend/conseguirEntrada.php?usuario=${usuario}`;
 
 fetch(url)
     .then((response) => response.json())

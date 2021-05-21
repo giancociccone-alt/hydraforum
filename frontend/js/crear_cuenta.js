@@ -6,7 +6,7 @@ document.querySelector('#formLogin').addEventListener('click',function(e){
 
     let datosUsuario = [usuario,password,repeatPassword];
 
-    const url = `/piton-4life/backend/crear_cuenta.php`;
+    const url = `../backend/crear_cuenta.php`;
 
     fetch(url, {
         method: 'POST',

@@ -20,7 +20,7 @@ document.querySelector('#formLogin').addEventListener('click',function(e){
         }
     }
 
-    const url = `/piton-4life/backend/iniciar_sesion.php`;
+    const url = `../backend/iniciar_sesion.php`;
 
     fetch(url, {
         method: 'POST',
