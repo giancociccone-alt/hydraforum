@@ -6,7 +6,7 @@
 
     $usuario = $_GET['username'];
 
-    $sql = 'SELECT username, estado
+    $sql = 'SELECT username
     FROM usuarios
     WHERE username != :username
     AND usuarios.username not in (

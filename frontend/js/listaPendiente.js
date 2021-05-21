@@ -14,18 +14,18 @@ window.addEventListener('DOMContentLoaded', function(){
 
     if(usuario){
 
-        const url = `../backend/listaPendiente.php?receptor=${usuario}`;
+        const url = `../backend/listaPendiente.php?usuario=${usuario}`;
 
         fetch(url)
             .then((response) => response.json())
-            .then(mostrandoAmigos)
+            .then(mostrandoPendientes)
             .catch(console.log);
 
     }
     
 });
 
-function mostrandoAmigos( {usuarios} ){
+function mostrandoPendientes( {usuarios} ){
 
     let listaPendiente = document.querySelector('#pendiente');
 
@@ -33,8 +33,8 @@ function mostrandoAmigos( {usuarios} ){
 
         let usuario = datosUsuario[0];
 
-        let div = document.createElement('div');
-        listaPendiente.appendChild(div);
+        let divPendiente = document.createElement('div');
+        listaPendiente.appendChild(divPendiente);
 
         let nombreUsuario = document.createElement('input');
         nombreUsuario.setAttribute('type','text');
@@ -42,10 +42,10 @@ function mostrandoAmigos( {usuarios} ){
         nombreUsuario.setAttribute('disabled','true');
         nombreUsuario.setAttribute('value',usuario);
         nombreUsuario.setAttribute('id',usuario);
-        div.appendChild(nombreUsuario);
+        divPendiente.appendChild(nombreUsuario);
 
         let pEstadoAmistad = document.createElement('p');
-        div.appendChild(pEstadoAmistad);
+        divPendiente.appendChild(pEstadoAmistad);
 
         let textEstadoAmistad = document.createTextNode('PENDIENTE');
         pEstadoAmistad.appendChild(textEstadoAmistad);
@@ -55,18 +55,18 @@ function mostrandoAmigos( {usuarios} ){
         botonAceptar.setAttribute('id',usuario);
         botonAceptar.setAttribute('value','ACEPTADO');
         botonAceptar.addEventListener('click',aceptarAmigo);
-        div.appendChild(botonAceptar);
+        divPendiente.appendChild(botonAceptar);
 
         let botonRechazar = document.createElement('input');
         botonRechazar.setAttribute('type','button');
         botonRechazar.setAttribute('id',usuario);
         botonRechazar.setAttribute('value','RECHAZADO');
         botonRechazar.addEventListener('click',rechazarUsuario);
-        div.appendChild(botonRechazar);
+        divPendiente.appendChild(botonRechazar);
         
     });
 
-}
+ }
 
 function aceptarAmigo(e){
 

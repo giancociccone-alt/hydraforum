@@ -5,7 +5,7 @@
 
     $contentType = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) : '';
 
-    $usuario = $_GET['receptor'];
+    $usuario = $_GET['usuario'];
 
     $sql = 'SELECT emisor, estado FROM amigos WHERE receptor = :receptor AND estado = "PENDIENTE"';
     $resultado = $conexion->prepare($sql);
