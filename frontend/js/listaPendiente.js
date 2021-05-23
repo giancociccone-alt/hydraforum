@@ -41,28 +41,53 @@ function mostrandoPendientes( {usuarios} ){
         nombreUsuario.setAttribute('class','nombreUsuario');
         nombreUsuario.setAttribute('disabled','true');
         nombreUsuario.setAttribute('value',usuario);
-        nombreUsuario.setAttribute('id',usuario);
         divPendiente.appendChild(nombreUsuario);
 
         let pEstadoAmistad = document.createElement('p');
         divPendiente.appendChild(pEstadoAmistad);
 
-        let textEstadoAmistad = document.createTextNode('PENDIENTE');
+        let textEstadoAmistad = document.createTextNode('DESCONOCIDO/PENDIENTE');
         pEstadoAmistad.appendChild(textEstadoAmistad);
+
+        //Inicio de opcion para aceptar usuario
+
+        let labelAceptar = document.createElement('label');
+        labelAceptar.setAttribute('for',`aceptar${usuario}`);
+        divPendiente.appendChild(labelAceptar);
+
+        let iAceptar = document.createElement('i');
+        iAceptar.setAttribute('class','fas fa-check iAceptar');
+        labelAceptar.appendChild(iAceptar);
 
         let botonAceptar = document.createElement('input');
         botonAceptar.setAttribute('type','button');
-        botonAceptar.setAttribute('id',usuario);
-        botonAceptar.setAttribute('value','ACEPTADO');
+        botonAceptar.setAttribute('id',`aceptar${usuario}`);
+        botonAceptar.setAttribute('class',`btnAceptarUsuario`);
+        botonAceptar.setAttribute('value',usuario);
         botonAceptar.addEventListener('click',aceptarAmigo);
         divPendiente.appendChild(botonAceptar);
 
+        //Fin de opcion para aceptar usuario
+        
+        //Inicio de opcion para rechazar usuario
+
+        let labelRechazar = document.createElement('label');
+        labelRechazar.setAttribute('for',`rechazar${usuario}`);
+        divPendiente.appendChild(labelRechazar);
+
+        let iRechazar = document.createElement('i');
+        iRechazar.setAttribute('class','fas fa-user-times iRechazar');
+        labelRechazar.appendChild(iRechazar);
+
         let botonRechazar = document.createElement('input');
         botonRechazar.setAttribute('type','button');
-        botonRechazar.setAttribute('id',usuario);
-        botonRechazar.setAttribute('value','RECHAZADO');
+        botonRechazar.setAttribute('id',`rechazar${usuario}`);
+        botonRechazar.setAttribute('class',`btnRechazarUsuario`);
+        botonRechazar.setAttribute('value',usuario);
         botonRechazar.addEventListener('click',rechazarUsuario);
         divPendiente.appendChild(botonRechazar);
+
+        //Fin de opcion para rechazar usuario
         
     });
 
@@ -82,7 +107,7 @@ function aceptarAmigo(e){
         }
     }
 
-    const amigoSeleccionado = e.currentTarget.id;
+    const amigoSeleccionado = e.currentTarget.value;
 
     let datosAmistad = [amigoSeleccionado, usuario];
 
@@ -113,7 +138,7 @@ function rechazarUsuario(e){
         }
     }
 
-    const amigoSeleccionado = e.currentTarget.id;
+    const amigoSeleccionado = e.currentTarget.value;
 
     let datosAmistad = [amigoSeleccionado, usuario];
 

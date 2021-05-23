@@ -19,7 +19,7 @@
     }
 
     //Consulta para iniciar sesion
-    $sql = 'SELECT * FROM usuarios WHERE username = :username AND pass = :pass';
+    $sql = 'SELECT * FROM usuarios WHERE username = :username AND pass = hex(AES_ENCRYPT(:pass,"AES"))';
     
     $result = $conexion->prepare($sql);
     $result->execute(array(
@@ -32,7 +32,7 @@
     if($result->fetch()){
 
         //Actualizamos el tipo de sesion que eligio el usuario
-        $sql = 'UPDATE usuarios SET tipo_sesion =:sesion WHERE username = :username AND pass = :pass';
+        $sql = 'UPDATE usuarios SET tipo_sesion =:sesion WHERE username = :username AND pass = hex(AES_ENCRYPT(:pass,"AES"))';
         
         $result = $conexion->prepare($sql);
         $result->execute(array(
@@ -44,7 +44,7 @@
         if($result->rowCount() == 1){
 
             //Otra consulta con los datos actualizados de tipo de sesion
-            $sql = 'SELECT * FROM usuarios WHERE username = :username AND pass = :pass';
+            $sql = 'SELECT * FROM usuarios WHERE username = :username AND pass = hex(AES_ENCRYPT(:pass,"AES"))';
 
             $result = $conexion->prepare($sql);
             $result->execute(array(
@@ -63,7 +63,7 @@
 
         }else{
             //Consulta dado caso qeu el tipo de sesion sea el mismo
-            $sql = 'SELECT * FROM usuarios WHERE username = :username AND pass = :pass';
+            $sql = 'SELECT * FROM usuarios WHERE username = :username AND pass = hex(AES_ENCRYPT(:pass,"AES"))';
 
             $result = $conexion->prepare($sql);
             $result->execute(array(

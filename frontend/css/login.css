@@ -19,10 +19,9 @@
 }
 
 .form{
-    
-    width: 350px;
+    width: 380px;
     padding: 40px 40px 60px;
-    background: #131420;
+    background: #c7c7c7;
     border-radius: 10px;
     text-align: center;
     box-shadow: -5px -5px 10px rgba(255,255,255,0.05),
@@ -31,7 +30,7 @@
 }
 
 .form > h2{
-    color: #c7c7c7;
+    color: #000;
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 3px;
@@ -49,16 +48,14 @@
 
 .form .input .inputBox label{
     display: block;
-    color: #868686;
+    color: #000;
     margin-bottom: 5px;
     font-size: 18px;
 }
 
 .form .input .inputBox input{
     width: 100%;
-    
-    background-color: #131420;
-    
+    background-color: #5f5f61;
     border: none;
     outline: none;
     border-radius: 40px;
@@ -77,7 +74,6 @@
 
 .form .input .inputBox input[type="submit"]:active{
     margin-top: 14px;
-    color: gold;
     box-shadow:  -2px -5px 6px rgba(255,255,255,0.05),
                  2px 2px 6px rgba(0,0,0,0.8);
 
@@ -86,6 +82,20 @@ p > a{
     color:#ff0047;
 }
 
-p{
-   color: #868686; 
+p,
+.opcionesSesiones{
+   color: #000; 
 } 
+
+.form .input .inputBox input::placeholder{
+    color: #FFF;
+}
+
+.form,
+.opcionesSesiones,
+.form > h2,
+.form p,
+.form .input .inputBox input,
+.form .input .inputBox label{
+    transition: all .3s ease;
+}

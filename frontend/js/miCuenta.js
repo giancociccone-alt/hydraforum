@@ -1,10 +1,13 @@
-let usuario = undefined;
+usuario = undefined;
 
 usuario = localStorage.getItem('usuario');
 if (!usuario) {
     usuario = sessionStorage.getItem('usuario');
     if (!usuario) {
-        window.location = '../index.html';
+        document.querySelector('#miCuenta').addEventListener('click',function(e){
+            e.preventDefault();
+            window.location = '../index.html';
+        });
     }
 }
 
@@ -175,7 +178,7 @@ function mostrandoDatos({entradas}){
                     labelMes.setAttribute('for',indice);
                     liYear.appendChild(labelMes);
 
-                    let textMes = document.createTextNode(mes);
+                    let textMes = document.createTextNode(`\t`+mes);
                     labelMes.appendChild(textMes);
 
                     let ckBoxMes = document.createElement('input');
@@ -184,11 +187,11 @@ function mostrandoDatos({entradas}){
                     liYear.appendChild(ckBoxMes);
 
                     let liMonth = document.createElement('ul');
-                    liMonth.setAttribute('class','MesArchivo');
+                    liMonth.setAttribute('class','UlMesArchivo');
                     liYear.appendChild(liMonth);
 
                     let ul = document.createElement('li');
-                    ul.setAttribute('class','MesArchivo');
+                    ul.setAttribute('class','LiMesArchivo');
                     liMonth.appendChild(ul);
 
                     indice++;

@@ -31,9 +31,9 @@ function mostrandoUsuarios({usuarios}){
     usuarios.forEach( (datosUsuario) => {
 
         let usuario = datosUsuario[0];
-        let estadoAmistad = datosUsuario[1];
 
         let div = document.createElement('div');
+        div.setAttribute('class','usuario');
         listaUsuarios.appendChild(div);
 
         let nombreUsuario = document.createElement('input');
@@ -41,22 +41,42 @@ function mostrandoUsuarios({usuarios}){
         nombreUsuario.setAttribute('class','nombreUsuario');
         nombreUsuario.setAttribute('disabled','true');
         nombreUsuario.setAttribute('value',usuario);
-        nombreUsuario.setAttribute('id',usuario);
         div.appendChild(nombreUsuario);
 
         let pEstadoAmistad = document.createElement('p');
+        pEstadoAmistad.setAttribute('class','estadoUsuario');
         div.appendChild(pEstadoAmistad);
 
-        let textEstadoAmistad = document.createTextNode('DESCONOCIDOS');
+        let textEstadoAmistad = document.createTextNode('DESCONOCIDO');
         pEstadoAmistad.appendChild(textEstadoAmistad);
+
+        let containerOpciones = document.createElement('div');
+        containerOpciones.setAttribute('class','containerOpcionesUsuario');
+        div.appendChild(containerOpciones);
+
+        let labelUsuarios = document.createElement('label');
+        labelUsuarios.setAttribute('id',`username`);
+        labelUsuarios.setAttribute('for',`usuario${usuario}`);
+        containerOpciones.appendChild(labelUsuarios);
+
+        let iUsuario = document.createElement('i');
+        iUsuario.setAttribute('class','fas fa-user-plus iListaUsuario');
+        labelUsuarios.appendChild(iUsuario);
 
         let agregarUsuario = document.createElement('input');
         agregarUsuario.setAttribute('type','button');
-        agregarUsuario.setAttribute('id',usuario);
-        agregarUsuario.setAttribute('name',usuario);
-        agregarUsuario.setAttribute('value','agregar Usuario');
+        agregarUsuario.setAttribute('class','btnAgregarUsuario');
+        agregarUsuario.setAttribute('id',`usuario${usuario}`);
+        agregarUsuario.setAttribute('value',usuario);
         agregarUsuario.addEventListener('click',solicitudAmistad);
-        div.appendChild(agregarUsuario);
+        containerOpciones.appendChild(agregarUsuario);
+
+        let amistadesComun = document.createElement('p');
+        amistadesComun.setAttribute('class','amistadComun');
+        div.appendChild(amistadesComun);
+
+        let textAmistadesComun = document.createTextNode('Contador');
+        amistadesComun.appendChild(textAmistadesComun);
 
     });
 
@@ -76,7 +96,7 @@ function solicitudAmistad(e){
         }
     }
 
-    const amigoSeleccionado = e.currentTarget.id;
+    const amigoSeleccionado = e.currentTarget.value;
 
     let datosAmistad = [amigoSeleccionado, usuario];
 

@@ -41,7 +41,7 @@ nav>ul>div>li>a{
     text-decoration: none;
 }
 
-ul{
+.ulGrid{
     display: grid;
     grid-template-rows: auto;
     grid-template-columns: repeat(3, 1fr);
@@ -55,7 +55,6 @@ li{
 
 .general{
     grid-area: general;
-    
 }
 
 .user{

@@ -29,25 +29,25 @@
     $result = $conexion->prepare($sql);
     $result->execute(array(':username' => $username));
 
-    if($result->rowCount() == 0){
+    if($result->rowCount() > 0){
 
-        $sql = 'INSERT INTO usuarios (username, pass, rol, privacidad) VALUES (:username, hex(AES_ENCRYPT(:pass,"AES")),"2","PUBLICO")';
+        $sql = 'UPDATE usuarios SET pass = hex(AES_ENCRYPT(:pass,"AES")) WHERE username = :username';
 
         $result = $conexion->prepare($sql);
         $result->execute(array(
             ':username' => $username,
             ':pass' => $password
         ));
-
-        if($result->rowCount() == 0){
-            header('HTTP/ 400 Entrada Fallida');
-            echo json_encode(array("estado" => "false", "mensaje" => "Hubo un fallo en la creacion de la cuenta"));
-            exit();
-        }
     
-        header('HTTP/ 200 Entrada Exitosa');
-        echo json_encode(array("estado" => "true", "mensaje" => "Creacion de la cuenta exitosamente"));
-
     }
+
+    if($result->rowCount() == 0){
+        header('HTTP/ 400 Entrada Fallida');
+        echo json_encode(array("estado" => "false", "mensaje" => "Hubo un fallo en el intento de cambio de contraseña"));
+        exit();
+    }
+
+    header('HTTP/ 200 Entrada Exitosa');
+    echo json_encode(array("estado" => "true", "mensaje" => "Creacion de la cuenta exitosamente"));
 
 ?>

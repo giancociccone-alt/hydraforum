@@ -5,11 +5,57 @@
     color: #000;
 }
 
-#amigos,
-#pendiente,
-#usuarios{
+.btnEliminarAmigo,
+.btnAgregarUsuario,
+.btnAceptarUsuario,
+.btnRechazarUsuario{
+    display: none;
+}
+
+.iAceptar,
+.iRechazar,
+.iListaUsuario,
+.iAmigo{
+    cursor: pointer;
+}
+
+main{
     max-width: 50%;
     margin: 40px auto;
     background-color: rgba(255, 255, 255, 0.15);
     color: white;
+}
+
+.usuario{
+    margin: 20px auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+    grid-template-areas: "usuario . ."
+                        "estado . opciones"
+                        "amistadComun . .";
+}
+
+.nombreUsuario,
+.estadoUsuario,
+.containerOpcionesUsuario,
+.amistadComun{
+    margin: 10px auto;
+    display: grid;
+}
+
+.nombreUsuario{
+    grid-area: usuario;
+}
+
+.estadoUsuario{
+    grid-area: estado;
+}
+
+.containerOpcionesUsuario{
+    grid-area: opciones;
+}
+
+.amistadComun{
+    grid-area: amistadComun;
 }

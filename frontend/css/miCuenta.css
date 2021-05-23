@@ -1,4 +1,35 @@
+/*================================
+===========GRID MAIN==============
+==================================*/
+
+main {
+	display: grid;
+	grid-template-columns: auto 10fr 1fr;
+	grid-template-areas: 'crearEntrada articulos archivobBlog';
+}
+
+input[type="checkbox"]{
+    display: none;
+}
+
+input[type="checkbox"]:checked ~ .mesArchivo{
+    display: block;
+}
+
+.archivos{
+    display: block !important;
+}
+
+#articulos {
+    grid-area: articulos;
+}
+
+.archivosBlog {
+	grid-area: archivobBlog;
+}
+    
 .miBlog{
+    grid-area: crearEntrada;
     background-color: rgba(255, 255, 255, 0.05);
     padding: 30px;
     width: 160px;
