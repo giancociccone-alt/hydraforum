@@ -10,7 +10,10 @@ if (!usuario) {
 }
 
 if(usuario){
-    
+    let iniciarSesion = document.querySelector('#iniciarSesion');
+        iniciarSesion.parentNode.removeChild(iniciarSesion);
+    let crearCuenta = document.querySelector('#crearCuenta');
+        crearCuenta.parentNode.removeChild(crearCuenta);
     document.querySelector("#miCuenta").innerHTML = usuario.toUpperCase();
     if(window.location.pathname == "/hydraforum/index.html"){
         document.querySelector("#miCuenta").setAttribute('href','./frontend/miCuenta.html');

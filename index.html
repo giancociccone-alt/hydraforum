@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./frontend/css/index.css">
     <link rel="stylesheet" href="./frontend/css/notificaciones.css">
     <link rel="stylesheet" href="./frontend/css/menuPrincipal.css">
+    <!-- <link rel="stylesheet" href="./frontend/css/servicioWeb.css"> -->
 </head>
 <body>
 
@@ -23,8 +24,10 @@
             <div class="caja user">
                 <li><a href="./frontend/ayuda.html">AYUDA</a></li>
                 <li>
-                    <a id="miCuenta" href="./frontend/login.html">INICIAR SESION</a>
+                    <a id="miCuenta">MI CUENTA</a>
                     <ul>
+                        <li><a id="iniciarSesion" href="./frontend/login.html">INICIAR SESION</a></li>
+                        <li><a id="crearCuenta" href="./frontend/crear_cuenta.html">CREAR CUENTA</a></li>
                         <li><a id="cerrarSesion" href="./index.html">CERRAR SESION</a></li>
                     </ul>
                 </li>
@@ -48,22 +51,40 @@
     </nav>
     
     <main>
-        <div class="container">
+        <div class="contenedor">
 
             <div class="mapa">
                 <iframe loading="lazy" style="height: 747px;width: 100%;" src="https://www.meteoblue.com/es/tiempo/maps/widget/madrid_espa%c3%b1a_3117735?windAnimation=0&windAnimation=1&gust=0&gust=1&satellite=0&satellite=1&coronaWeatherScore=0&coronaWeatherScore=1&geoloc=fixed&tempunit=C&windunit=km%252Fh&lengthunit=metric&zoom=5&autowidth=auto"  frameborder="0" scrolling="NO" allowtransparency="true" sandbox="allow-same-origin allow-scripts allow-popups allow-popups-to-escape-sandbox" style="width: 100%; height: 720px"></iframe><div><!-- DO NOT REMOVE THIS LINK --><a href="https://www.meteoblue.com/es/tiempo/webmap/beta/madrid_espa%c3%b1a_3117735?utm_source=weather_widget&utm_medium=linkus&utm_content=map&utm_campaign=Weather%2BWidget" target="_blank"></a></div>
             </div>
-            <!--class="tiempo"-->
+            
+            <!-- <div class="tiempo">
+                <section class="top-banner">
+                    <div class="container">
+                        <h1 class="heading">Simple Weather App</h1>
+                        <form>
+                        <input type="text" placeholder="Search for a city">
+                        <button type="submit">SUBMIT</button>
+                        <span class="msg"></span>
+                        </form>
+                    </div>
+                </section>
+                <section class="ajax-section">
+                    <div class="container">
+                        <ul class="cities"></ul>
+                    </div>
+                </section>
+            </div> -->
             
             
-            <div class="video">
+            <!-- <div class="video">
                 <iframe id="video_aemet" loading="lazy" name="video_aemet" src="https://www.aemet.es/es/videos" width="350" height="375" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" frameborder="0" scrolling="no">
-            </div>
+            </div> -->
 
         </div>
-    </main>
+    </main> 
 
     <script src="./frontend/js/cerrar_sesion.js"></script>
+    <!-- <script src="./frontend/js/servicioWeb.js"></script> -->
     <script src="https://kit.fontawesome.com/ef546ce5ec.js" crossorigin="anonymous"></script>
 
 </body>
