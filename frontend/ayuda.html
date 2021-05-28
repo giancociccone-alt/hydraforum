@@ -25,27 +25,17 @@
                     <li>
                         <a id="miCuenta">MI CUENTA</a>
                         <ul>
-                            <li><a id="iniciarSesion" href="./frontend/login.html">INICIAR SESION</a></li>
-                            <li><a id="crearCuenta" href="./frontend/crear_cuenta.html">CREAR CUENTA</a></li>
+                            <li><a id="iniciarSesion" href="./login.html">INICIAR SESION</a></li>
+                            <li><a id="crearCuenta" href="./crear_cuenta.html">CREAR CUENTA</a></li>
                             <li><a id="cerrarSesion" href="./index.html">CERRAR SESION</a></li>
                         </ul>
                     </li>
                     <li><img src="./imagenes/dragon.jpeg" style="height: 50px; width: 50px;"></li>
                     <li>
-                        <img src="./imagenes/alarm2.png" class="shake-rotate shake-freeze" style="height: 30px; width: 30px;">
-                        <!-- SELECT COUNT(leido) as notificaciones FROM mensajes WHERE id_usuario=$_SESSION['usuario'] AND leido=0  -->
-                        <div class="cantidad">
-                            <!-- YA QUE LE DIO CLICK A NOTIFICACIONES SE EJECUTRA LA SIGUENTE CONSULTA
-                            UPDATE FROM mensajes SET leido=1 WHERE leido=0  -->
-                            7
-                        </div>
-                        <div class="notificaciones" id="notificaciones">
-                            <ul>
-                                <li><a href="#">CHATS</a></li>
-                                <li><a href="#">PETICIONES DE AMISTAD</a></li>
-                            </ul>
-                        </div>
-                    </li>
+						<img src="./imagenes/alarm2.png" id="campana" style="height: 30px; width: 30px;">
+						<div class="numeroNotificaciones"></div>
+						<div class="notificaciones" id="notificaciones"></div>
+					</li>
                     <li>
                         <div class="boton">
                             <button class="switch" id="switch">
@@ -62,48 +52,197 @@
             </ul>
         </nav>
 
-    <main>
-        <h2>Preguntas Frecuentes</h2>
-        <section class="container">
-            <details class="preguntas">
-                <summary class="pregunta activo">¿Cómo crear una cuenta? <svg class="svgSuma" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 9h-9v-9h-6v9h-9v6h9v9h6v-9h9z"/></svg></summary>
-                <p class="respuesta">pregunta</p>
-            </details>
-            <details class="preguntas">
-                <summary class="pregunta">¿Cómo iniciar sesión? <svg class="svgSuma" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 9h-9v-9h-6v9h-9v6h9v9h6v-9h9z"/></svg></summary>
-                <p class="respuesta">pregunta2</p>
-            </details>
-            <details class="preguntas">
-                <summary class="pregunta">¿Cómo cambiar la contraseña? <svg class="svgSuma" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 9h-9v-9h-6v9h-9v6h9v9h6v-9h9z"/></svg></summary>
-                <p class="respuesta">pregunta</p>
-            </details>
-            <details class="preguntas">
-                <summary class="pregunta">¿Cómo crear una entrada en el foro? <svg class="svgSuma" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 9h-9v-9h-6v9h-9v6h9v9h6v-9h9z"/></svg></summary>
-                <p class="respuesta">pregunta</p>
-            </details>
-            <details class="preguntas">
-                <summary class="pregunta">¿Cómo configurar permisos del blog personal? <svg class="svgSuma" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 9h-9v-9h-6v9h-9v6h9v9h6v-9h9z"/></svg></summary>
-                <p class="respuesta">pregunta</p>
-            </details>
-            <details class="preguntas">
-                <summary class="pregunta">¿Qué actividades permite cada permiso? <svg class="svgSuma" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 9h-9v-9h-6v9h-9v6h9v9h6v-9h9z"/></svg></summary>
-                <p class="respuesta">pregunta</p>
-            </details>
-            <details class="preguntas">
-                <summary class="pregunta">¿Cómo mandar peticiones de amistad? <svg class="svgSuma" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 9h-9v-9h-6v9h-9v6h9v9h6v-9h9z"/></svg></summary>
-                <p class="respuesta">pregunta</p>
-            </details>
-            <details class="preguntas">
-                <summary class="pregunta">¿Cómo iniciar un chat privado? <svg class="svgSuma" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 9h-9v-9h-6v9h-9v6h9v9h6v-9h9z"/></svg></summary>
-                <p class="respuesta">pregunta</p>
-            </details>
-        </section>
-    </main>
+        <main>
+			<h2>Preguntas Frecuentes</h2>
+			<section class="container">
+				<details class="preguntas">
+					<summary class="pregunta activo">
+						¿Cómo crear una cuenta?
+						<svg
+							class="svgSuma"
+							xmlns="http://www.w3.org/2000/svg"
+							width="24"
+							height="24"
+							viewBox="0 0 24 24"
+						>
+							<path d="M24 9h-9v-9h-6v9h-9v6h9v9h6v-9h9z" />
+						</svg>
+					</summary>
+					<p class="respuesta">
+						Para crear una cuenta de usuaro, debes hacer click en MI CUENTA en
+						el menú de navegación, situado en la zona superior de la web cuya
+						acción, desplegará una lista de opciones entre las que se incluyen
+						CREAR CUENTA. Una vez cliqueado aparecerá una pantalla donde
+						tendrás que introducir un nombre de usuario y contraseña con la que
+						quiera crear su cuenta. A continuación si todo a transcurrido
+						correctamente, se le enviara un email al correo proporcionado y
+						podrá acceder a su pagina personal donde podra crear y editar
+						información personal y acceder a las funcionalidades exclusivas de
+						los usuarios validados.
+					</p>
+				</details>
+				<details class="preguntas">
+					<summary class="pregunta">
+						¿Cómo iniciar sesión?
+						<svg
+							class="svgSuma"
+							xmlns="http://www.w3.org/2000/svg"
+							width="24"
+							height="24"
+							viewBox="0 0 24 24"
+						>
+							<path d="M24 9h-9v-9h-6v9h-9v6h9v9h6v-9h9z" />
+						</svg>
+					</summary>
+					<p class="respuesta">
+						Una vez creada una cuenta de usuario valida, simplemente desde el
+						menú de navegacion en la parte superior, tendrás que hacer click en
+						MI CUENTA y elegir la opción Iniciar Sesión. Este evento te
+						redirigirá a una pantalla donde tendrás que escribir el usuario y
+						contraseña de tu cuenta de usuario.
+					</p>
+				</details>
+				<details class="preguntas">
+					<summary class="pregunta">
+						¿Cómo cambiar la contraseña?
+						<svg
+							class="svgSuma"
+							xmlns="http://www.w3.org/2000/svg"
+							width="24"
+							height="24"
+							viewBox="0 0 24 24"
+						>
+							<path d="M24 9h-9v-9h-6v9h-9v6h9v9h6v-9h9z" />
+						</svg>
+					</summary>
+					<p class="respuesta">pregunta</p>
+				</details>
+				<details class="preguntas">
+					<summary class="pregunta">
+						¿Cómo crear una entrada en tu página personal?
+						<svg
+							class="svgSuma"
+							xmlns="http://www.w3.org/2000/svg"
+							width="24"
+							height="24"
+							viewBox="0 0 24 24"
+						>
+							<path d="M24 9h-9v-9h-6v9h-9v6h9v9h6v-9h9z" />
+						</svg>
+					</summary>
+					<p class="respuesta">
+						Una vez hayas inciado sesión a tráves, de la opcióm del menú
+						principal MI CUENTA, aparecerá un enlace con tu nombre de usuario. Una vez
+						dentro verás un botón en el margen superior-derecho llamado CREAR
+						ENTRADA. Al hacer click sobre el botón, aparecera una nueva pantalla
+						donde se te proporciona un editor de texto e imágenes, para que
+						puedas escribir el contenido y podrás elegir una imagen que se
+						mostrara como portada de dicho contenido.
+					</p>
+				</details>
+                <details class="preguntas">
+					<summary class="pregunta">
+						¿Cómo crear una entrada en un hilo del foro?
+						<svg
+							class="svgSuma"
+							xmlns="http://www.w3.org/2000/svg"
+							width="24"
+							height="24"
+							viewBox="0 0 24 24"
+						>
+							<path d="M24 9h-9v-9h-6v9h-9v6h9v9h6v-9h9z" />
+						</svg>
+					</summary>
+					<p class="respuesta">
+						Una vez hayas inciado sesión, pinchando en el enlace FORO del menú principal de opciones situado arriba de la web, podrás acceder al listado de foros. Simplemente tendras que pinchar en una y utilizar el botón crear entrada y con la ayuda de un editor que se desplega al pinchar en dicho botón podrás generar el contenido.
+					</p>
+				</details>
+				<details class="preguntas">
+					<summary class="pregunta">
+						¿Cómo configurar permisos del blog personal?
+						<svg
+							class="svgSuma"
+							xmlns="http://www.w3.org/2000/svg"
+							width="24"
+							height="24"
+							viewBox="0 0 24 24"
+						>
+							<path d="M24 9h-9v-9h-6v9h-9v6h9v9h6v-9h9z" />
+						</svg>
+					</summary>
+					<p class="respuesta"></p>
+				</details>
+				<details class="preguntas">
+					<summary class="pregunta">
+						¿Qué actividades permite cada permiso?
+						<svg
+							class="svgSuma"
+							xmlns="http://www.w3.org/2000/svg"
+							width="24"
+							height="24"
+							viewBox="0 0 24 24"
+						>
+							<path d="M24 9h-9v-9h-6v9h-9v6h9v9h6v-9h9z" />
+						</svg>
+					</summary>
+					<p class="respuesta">
+						El usuario con permirsos de administrador tendrá acceso a todas las
+						funcionalidades de usuario, incluyendo la facultad de poder moderar y
+						administar los contendidos del foro, será el unico usuario que puede
+						iniciar hilos de conversación y tambien tendrá la potestad de
+						sancionar usuarios, bloqueando su cuenta y contenidos previo aviso
+						al usuario de conductas inadecuadas, para que en plazo un plazo de 7
+						días, pudiera presentar sus alegaciones a dicha sanción u reorientar
+						dicha conducta o contenido sancionable. De no ser asi podría ser
+						eleminado por completo del sistema.
+
+                        El resto de Usuario, podrán publicar entradas en hilos ya iniciados y manejar 
+                        su blog deacuerdo a las normas de conducta explicadas en el apartado <a>Normas de uso</a> situado en el pie de la página, asi como interactuar con otros usuarios atrvés de peticienes de amistad y chat privado.
+					</p>
+				</details>
+				<details class="preguntas">
+					<summary class="pregunta">
+						¿Cómo mandar peticiones de amistad?
+						<svg
+							class="svgSuma"
+							xmlns="http://www.w3.org/2000/svg"
+							width="24"
+							height="24"
+							viewBox="0 0 24 24"
+						>
+							<path d="M24 9h-9v-9h-6v9h-9v6h9v9h6v-9h9z" />
+						</svg>
+					</summary>
+					<p class="respuesta">
+						En el menún pricipal de la parte superior, existe una pestaña
+						denominada USUARIOS, al hacer click aparecen el listado de todos los
+						usuarios que compoenen el sistema y las opciones de mandar solicitud
+						de amistad, aceptar peticiones recibidas pendiantes o cancelar el
+						esatdo de amistad con el usuario indicado.
+					</p>
+				</details>
+				<details class="preguntas">
+					<summary class="pregunta">
+						¿Cómo iniciar un chat privado?
+						<svg
+							class="svgSuma"
+							xmlns="http://www.w3.org/2000/svg"
+							width="24"
+							height="24"
+							viewBox="0 0 24 24"
+						>
+							<path d="M24 9h-9v-9h-6v9h-9v6h9v9h6v-9h9z" />
+						</svg>
+					</summary>
+					<p class="respuesta">Con sesion iniciada, debes acceder al botón USUARIOS situado en el menú principal en la parte superior de la página y una vez dentro aparece un despleglable con todos los usuarios y aquellos con los que tengas amistad podras pulsar el icono de chat para mandar mensajes instantaneos.</p>
+				</details>
+			</section>
+		</main>
 
     <script src="./js/ayuda.js"></script>
     <script src="./js/darkmode.js"></script>
-    <script src="./js/listaUsuarios.js"></script>
-    <script src="./js/cerrar_sesion.js"></script>
+	<script src="./js/usuario/campana.js"></script>
+    <script src="./js/sesiones/cerrar_sesion.js"></script>
 
     <script src="https://kit.fontawesome.com/ef546ce5ec.js" crossorigin="anonymous"></script>
 

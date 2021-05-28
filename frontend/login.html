@@ -25,26 +25,16 @@
                     <li>
                         <a id="miCuenta">MI CUENTA</a>
                         <ul>
-                            <li><a id="iniciarSesion" href="./frontend/login.html">INICIAR SESION</a></li>
-                            <li><a id="crearCuenta" href="./frontend/crear_cuenta.html">CREAR CUENTA</a></li>
+                            <li><a id="iniciarSesion" href="./login.html">INICIAR SESION</a></li>
+                            <li><a id="crearCuenta" href="./crear_cuenta.html">CREAR CUENTA</a></li>
                             <li><a id="cerrarSesion" href="./index.html">CERRAR SESION</a></li>
                         </ul>
                     </li>
                     <li><img src="./imagenes/dragon.jpeg" style="height: 50px; width: 50px;"></li>
                     <li>
-                        <img src="./imagenes/alarm2.png" class="shake-rotate shake-freeze" style="height: 30px; width: 30px;">
-                        <!-- SELECT COUNT(leido) as notificaciones FROM mensajes WHERE id_usuario=$_SESSION['usuario'] AND leido=0  -->
-                        <div class="cantidad">
-                            <!-- YA QUE LE DIO CLICK A NOTIFICACIONES SE EJECUTRA LA SIGUENTE CONSULTA
-                            UPDATE FROM mensajes SET leido=1 WHERE leido=0  -->
-                            7
-                        </div>
-                        <div class="notificaciones" id="notificaciones">
-                            <ul>
-                                <li><a href="#">CHATS</a></li>
-                                <li><a href="#">PETICIONES DE AMISTAD</a></li>
-                            </ul>
-                        </div>
+                        <img src="./imagenes/alarm2.png" id="campana" style="height: 30px; width: 30px;">
+                        <div class="numeroNotificaciones"></div>
+                        <div class="notificaciones" id="notificaciones"></div>
                     </li>
                     <li>
                         <div class="boton">
@@ -93,10 +83,10 @@
             </div>
         </div>
 
-        <script src="./js/login.js"></script>
         <script src="./js/darkmode.js"></script>
-        <script src="./js/listaUsuarios.js"></script>
-        <script src="./js/cerrar_sesion.js"></script>
+        <script src="./js/sesiones/login.js"></script>
+        <script src="./js/usuario/campana.js"></script>
+        <script src="./js/sesiones/cerrar_sesion.js"></script>
 
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
         <script src="https://kit.fontawesome.com/ef546ce5ec.js" crossorigin="anonymous"></script>

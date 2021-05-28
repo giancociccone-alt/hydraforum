@@ -25,26 +25,16 @@
                     <li>
                         <a id="miCuenta">MI CUENTA</a>
                         <ul>
-                            <li><a id="iniciarSesion" href="./frontend/login.html">INICIAR SESION</a></li>
-                            <li><a id="crearCuenta" href="./frontend/crear_cuenta.html">CREAR CUENTA</a></li>
+                            <li><a id="iniciarSesion" href="./login.html">INICIAR SESION</a></li>
+                            <li><a id="crearCuenta" href="./crear_cuenta.html">CREAR CUENTA</a></li>
                             <li><a id="cerrarSesion" href="./index.html">CERRAR SESION</a></li>
                         </ul>
                     </li>
                     <li><img src="./imagenes/dragon.jpeg" style="height: 50px; width: 50px;"></li>
                     <li>
-                        <img src="./imagenes/alarm2.png" class="shake-rotate shake-freeze" style="height: 30px; width: 30px;">
-                        <!-- SELECT COUNT(leido) as notificaciones FROM mensajes WHERE id_usuario=$_SESSION['usuario'] AND leido=0  -->
-                        <div class="cantidad">
-                            <!-- YA QUE LE DIO CLICK A NOTIFICACIONES SE EJECUTRA LA SIGUENTE CONSULTA
-                            UPDATE FROM mensajes SET leido=1 WHERE leido=0  -->
-                            7
-                        </div>
-                        <div class="notificaciones" id="notificaciones">
-                            <ul>
-                                <li><a href="#">CHATS</a></li>
-                                <li><a href="#">PETICIONES DE AMISTAD</a></li>
-                            </ul>
-                        </div>
+                        <img src="./imagenes/alarm2.png" id="campana" style="height: 30px; width: 30px;">
+                        <div class="numeroNotificaciones"></div>
+                        <div class="notificaciones" id="notificaciones"></div>
                     </li>
                     <li>
                         <div class="boton">
@@ -68,13 +58,102 @@
             <div id="usuarios"><h3>USUARIOS</h3></div>
         </main>
 
-        <script src="./js/listaAmigo.js"></script>
-        <script src="./js/listaPendiente.js"></script>
-        <script src="./js/listaUsuarios.js"></script>
-        <script src="./js/cerrar_sesion.js"></script>
         <script src="./js/darkmode.js"></script>
+        <script src="./js/usuario/campana.js"></script>
+        <script src="./js/usuario/listaAmigo.js"></script>
+        <script src="./js/usuario/listaUsuarios.js"></script>
+        <script src="./js/usuario/listaPendiente.js"></script>
+        <script src="./js/sesiones/cerrar_sesion.js"></script>
 
         <script src="https://kit.fontawesome.com/ef546ce5ec.js" crossorigin="anonymous"></script>
+
+
+        <section class="body-chat">
+            <div class="seccion-titulo">
+                <h3>
+                    <i class="fas fa-comments"></i>
+                    Sistema de mensajeria
+                </h3>
+            </div>
+    
+            <div class="seccion-chat">
+                <div class="usuario-seleccionado"></div>
+                <div class="panel-chat">
+                    <div class="mensaje">
+                        <div class="cuerpo">
+                            <!-- <img src="http://localhost/multimedia/png/user-foto-3.png" alt=""> -->
+                            <div class="texto">
+                                <!-- Lorem ipsum dolor sit, amet consectetur adipisicing, elit. Dolor
+                                eligendi voluptatum dolore voluptas iure.
+                                <span class="tiempo">
+                                    <i class="far fa-clock"></i>
+                                    Hace 5 min
+                                </span> -->
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <!-- derecha -->
+                    <div class="mensaje left">
+                        <div class="cuerpo">
+                            <!-- <img src="http://localhost/multimedia/png/user-foto-3.png" alt=""> -->
+                            <div class="texto">
+                                Lorem ipsum dolor sit, amet consectetur adipisicing, elit. Dolor
+                                eligendi voluptatum dolore voluptas iure.
+                                <span class="tiempo">
+                                    <i class="far fa-clock"></i>
+                                    Hace 6 min
+                                </span>
+                            </div>
+                            <ul class="opciones-msj">
+                                <li>
+                                    <button type="button">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </li>
+                                <li>
+                                    <button type="button">
+                                        <i class="fas fa-share-square"></i>
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-escritura">
+                    <form class="textarea">
+                        <div class="opcines">
+                            <button type="button">
+                                <i class="fas fa-file"></i>
+                                <label for="file"></label>
+                                <input type="file" id="file" />
+                            </button>
+                            <button type="button">
+                                <i class="far fa-image"></i>
+                                <label for="img"></label>
+                                <input type="file" id="img" />
+                            </button>
+                        </div>
+                        <textarea placeholder="Escribir mensaje"></textarea>
+                        <button type="button" class="enviar">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <link
+			rel="stylesheet"
+			type="text/css"
+			href="https://necolas.github.io/normalize.css/8.0.1/normalize.css"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+			integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+			crossorigin="anonymous"
+		/>
 
     </body>
 </html>
