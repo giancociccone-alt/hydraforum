@@ -43,7 +43,6 @@ function recibiendoDatos({estado, mensaje}){
 
         if(mensaje[1] == "localStorage"){
             localStorage.setItem('usuario',usuario);
-            localStorage.setItem('rol',permiso);
             window.location = "../index.html";
         }else{
             sessionStorage.setItem('usuario',usuario);
@@ -51,6 +50,15 @@ function recibiendoDatos({estado, mensaje}){
             window.location = "../index.html";
         }
 
+    }else if(estado === "sancion"){
+        Swal.fire({
+            icon: 'error',
+            title: 'Has sido sancionado por incumplir la normativa del foro hasta la fecha '+mensaje,
+            timer: 4500,
+            showConfirmButton: false
+        }).then(function(){
+            window.location = "../index.html";
+        })
     }else{
         
         Swal.fire({

@@ -15,11 +15,12 @@
         $username = $datosUsuario[0];
         $password = $datosUsuario[1];
         $tipoSesion = $datosUsuario[2];
+        $fechaActual = date('Y-m-d');
 
     }
 
     //Consulta para iniciar sesion
-    $sql = 'SELECT username FROM usuarios WHERE username = :username AND pass = hex(AES_ENCRYPT(:pass,"AES"))';
+    $sql = 'SELECT username, sancion FROM usuarios WHERE username = :username AND pass = hex(AES_ENCRYPT(:pass,"AES"))';
     
     $result = $conexion->prepare($sql);
     $result->execute(array(
@@ -29,7 +30,13 @@
 
     $indice = 0;
 
-    if($result->fetch()){
+    if($fila = $result->fetch()){
+
+        if($fila['sancion'] >= $fechaActual){
+            header('HTTP/ 400 Entrada Fallida');
+            echo json_encode(array("estado" => "sancion", "mensaje" => $fila['sancion']));
+            exit();
+        }
 
         //Actualizamos el tipo de sesion que eligio el usuario
         $sql = 'UPDATE usuarios SET tipo_sesion =:sesion WHERE username = :username AND pass = hex(AES_ENCRYPT(:pass,"AES"))';

@@ -31,52 +31,116 @@ function mostrandoUsuarios({usuarios}){
     usuarios.forEach( (datosUsuario) => {
 
         let usuario = datosUsuario[0];
-
+        let fechaSancion = datosUsuario[1];
+        
         let div = document.createElement('div');
         div.setAttribute('class','usuario');
         listaUsuarios.appendChild(div);
 
-        let nombreUsuario = document.createElement('input');
-        nombreUsuario.setAttribute('type','text');
-        nombreUsuario.setAttribute('class','nombreUsuario');
-        nombreUsuario.setAttribute('disabled','true');
-        nombreUsuario.setAttribute('value',usuario);
-        div.appendChild(nombreUsuario);
+        if(sessionStorage.getItem('rol') == 2){
 
-        let pEstadoAmistad = document.createElement('p');
-        pEstadoAmistad.setAttribute('class','estadoUsuario');
-        div.appendChild(pEstadoAmistad);
+            /* ELIMINAR */
 
-        let textEstadoAmistad = document.createTextNode('DESCONOCIDO');
-        pEstadoAmistad.appendChild(textEstadoAmistad);
+            // let labelUsuario = document.createElement('label');
+            // labelUsuario.setAttribute('for',`eliminar${usuario}`);
+            // div.appendChild(labelUsuario);
+            
+            // let iEliminarUsuario = document.createElement('i');
+            // iEliminarUsuario.setAttribute('class','fas fa-heart-broken iAmigo');
+            // labelUsuario.appendChild(iEliminarUsuario);
+            
+            // let EliminarUsuario = document.createElement('input');
+            // EliminarUsuario.setAttribute('type','button');
+            // EliminarUsuario.setAttribute('id',`eliminar${usuario}`);
+            // EliminarUsuario.setAttribute('class',`btnEliminarUsuario`);
+            // EliminarUsuario.setAttribute('value',usuario);
+            // EliminarUsuario.addEventListener('click',eliminarAmistad);
+            // div.appendChild(EliminarUsuario);
 
-        let containerOpciones = document.createElement('div');
-        containerOpciones.setAttribute('class','containerOpcionesUsuario');
-        div.appendChild(containerOpciones);
+            /* ELIMINAR SANCIONAR */
 
-        let labelUsuarios = document.createElement('label');
-        labelUsuarios.setAttribute('id',`username`);
-        labelUsuarios.setAttribute('for',`usuario${usuario}`);
-        containerOpciones.appendChild(labelUsuarios);
+            if(fechaSancion != '0000-00-00'){
+                let labelQuitarSancion = document.createElement('label');
+                labelQuitarSancion.setAttribute('id',usuario);
+                labelQuitarSancion.setAttribute('name',`${usuario}`);
+                labelQuitarSancion.addEventListener('click', quitarSancion);
+                div.appendChild(labelQuitarSancion);
 
-        let iUsuario = document.createElement('i');
-        iUsuario.setAttribute('class','fas fa-user-plus iListaUsuario');
-        labelUsuarios.appendChild(iUsuario);
+                let quitarSancionUsuario = document.createElement('input');
+                quitarSancionUsuario.setAttribute('type','button');
+                quitarSancionUsuario.setAttribute('id',`${usuario}`);
+                quitarSancionUsuario.setAttribute('class',`btnSancionar${usuario}`);
+                quitarSancionUsuario.setAttribute('value','Quitar sancion');
+                div.appendChild(quitarSancionUsuario);
 
-        let agregarUsuario = document.createElement('input');
-        agregarUsuario.setAttribute('type','button');
-        agregarUsuario.setAttribute('class','btnAgregarUsuario');
-        agregarUsuario.setAttribute('id',`usuario${usuario}`);
-        agregarUsuario.setAttribute('value',usuario);
-        agregarUsuario.addEventListener('click',solicitudAmistad);
-        containerOpciones.appendChild(agregarUsuario);
+                let iQuitarSancionUsuario = document.createElement('i');
+                iQuitarSancionUsuario.setAttribute('class','fas fa-heart-broken iAmigo');
+                labelQuitarSancion.appendChild(iQuitarSancionUsuario);
+            }
 
-        let amistadesComun = document.createElement('p');
-        amistadesComun.setAttribute('class','amistadComun');
-        div.appendChild(amistadesComun);
+            /* SANCIONAR */
+            
+            let labelSancionarUsuario = document.createElement('label');
+            labelSancionarUsuario.setAttribute('id',usuario);
+            labelSancionarUsuario.setAttribute('name',`${usuario}`);
+            labelSancionarUsuario.addEventListener('click',enviarFechaSancion);
+            div.appendChild(labelSancionarUsuario);
 
-        let textAmistadesComun = document.createTextNode('Contador');
-        amistadesComun.appendChild(textAmistadesComun);
+            let sancionarUsuario = document.createElement('input');
+            sancionarUsuario.setAttribute('type','date');
+            sancionarUsuario.setAttribute('id',`${usuario}`);
+            sancionarUsuario.setAttribute('class',`btnSancionar${usuario}`);
+            div.appendChild(sancionarUsuario);
+            
+            let iSancionarUsuario = document.createElement('i');
+            iSancionarUsuario.setAttribute('class',`fas fa-heart-broken iAmigo`);
+            labelSancionarUsuario.appendChild(iSancionarUsuario);
+            
+
+        }
+
+            let nombreUsuario = document.createElement('input');
+            nombreUsuario.setAttribute('type','text');
+            nombreUsuario.setAttribute('class','nombreUsuario');
+            nombreUsuario.setAttribute('disabled','true');
+            nombreUsuario.setAttribute('value',usuario);
+            div.appendChild(nombreUsuario);
+
+            let pEstadoAmistad = document.createElement('p');
+            pEstadoAmistad.setAttribute('class','estadoUsuario');
+            div.appendChild(pEstadoAmistad);
+
+            let textEstadoAmistad = document.createTextNode('DESCONOCIDO');
+            pEstadoAmistad.appendChild(textEstadoAmistad);
+
+            let containerOpciones = document.createElement('div');
+            containerOpciones.setAttribute('class','containerOpcionesUsuario');
+            div.appendChild(containerOpciones);
+
+            let labelUsuarios = document.createElement('label');
+            labelUsuarios.setAttribute('id',`username`);
+            labelUsuarios.setAttribute('for',`usuario${usuario}`);
+            containerOpciones.appendChild(labelUsuarios);
+
+            let iUsuario = document.createElement('i');
+            iUsuario.setAttribute('class','fas fa-user-plus iListaUsuario');
+            labelUsuarios.appendChild(iUsuario);
+
+            let agregarUsuario = document.createElement('input');
+            agregarUsuario.setAttribute('type','button');
+            agregarUsuario.setAttribute('class','btnAgregarUsuario');
+            agregarUsuario.setAttribute('id',`usuario${usuario}`);
+            agregarUsuario.setAttribute('value',usuario);
+            agregarUsuario.addEventListener('click',solicitudAmistad);
+            containerOpciones.appendChild(agregarUsuario);
+
+            let amistadesComun = document.createElement('p');
+            amistadesComun.setAttribute('class','amistadComun');
+            div.appendChild(amistadesComun);
+
+            let textAmistadesComun = document.createTextNode('Contador');
+            amistadesComun.appendChild(textAmistadesComun);
+        
 
     });
 
@@ -111,4 +175,96 @@ function solicitudAmistad(e){
         .then((response) => response.json())
         .then(window.location.reload())
         .catch(console.log);
+}
+
+// function eliminarAmistad(e){
+
+//     var usuario = undefined;
+
+//     usuario = localStorage.getItem('usuario');
+//     if (!usuario) {
+//         usuario = sessionStorage.getItem('usuario');
+//         if (!usuario) {
+//             document.querySelector('#usuario').addEventListener('click',function(e){
+//                 e.preventDefault();
+//             });
+//         }
+//     }
+
+//     const amigoSeleccionado = e.currentTarget.value;
+
+//     const url = `../backend/admin/eliminarUsuario.php`;
+    
+//     fetch(url, {
+//                 method: 'POST',
+//                 body: amigoSeleccionado,
+//                 headers:{'Content-Type': 'application/json'}
+//             }
+//     )
+//         .then((response) => response.json())
+//         .then(window.location.reload())
+//         .catch(console.log);
+// }
+
+function enviarFechaSancion(e){
+
+    const usuarioSeleccionado = e.currentTarget.id;
+    
+    const fechaPenalizacion = document.querySelector(`.btnSancionar${usuarioSeleccionado}`).value;
+    
+    let datosAmistad = [ usuarioSeleccionado, fechaPenalizacion ];
+
+    const url = `../backend/admin/sancionarUsuario.php`;
+    
+    fetch(url, {
+                method: 'POST',
+                body: datosAmistad,
+                headers:{'Content-Type': 'application/json'}
+            }
+    )
+        .then((response) => response.json())
+        .then(recibiendoDatos)
+        .catch(console.log);
+
+}
+
+function quitarSancion(e){
+
+    const usuarioSeleccionado = e.currentTarget.id;
+
+    const url = '../backend/admin/eliminarSancion.php';
+
+    fetch(url, {
+                method: 'POST',
+                body: usuarioSeleccionado,
+                headers:{'Content-Type': 'application/json'}
+            }
+    )
+        .then((response) => response.json())
+        .then(window.location.reload())
+        .catch(console.log);
+
+}
+
+function recibiendoDatos({estado, mensaje}){
+
+    if(estado === "true"){
+        
+        Swal.fire({
+            icon: 'success',
+            title: 'Sancion colocada',
+            timer: 3500,
+            showConfirmButton: false
+        })
+
+    }else{
+        
+        Swal.fire({
+            icon: 'error',
+            title: 'Error al colocar la sancion',
+            timer: 3500,
+            showConfirmButton: false
+        })
+    }
+
 }

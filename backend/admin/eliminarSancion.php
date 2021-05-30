@@ -12,15 +12,15 @@
 
         $datosAmistad = preg_split("/[,]+/",$content);
 
-        $eliminarAmigoSeleccionado = $datosAmistad[0];
+        $username = $datosAmistad[0];
 
     }
 
-    $sql = 'DELETE FROM usuarios WHERE username = :username';
+    $sql = 'UPDATE usuarios SET sancion ="0000-00-00" WHERE username = :username';
 
     $result = $conexion->prepare($sql);
     $result->execute(array(
-        ':username' => $eliminarAmigoSeleccionado,
+        ':username' => $username,
     ));
     
     if($result->rowCount() > 0){

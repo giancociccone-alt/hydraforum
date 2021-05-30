@@ -6,7 +6,7 @@
 
     $usuario = $_GET['username'];
 
-    $sql = 'SELECT username
+    $sql = 'SELECT username, sancion
     FROM usuarios
     WHERE username != :username
     AND usuarios.username not in (
@@ -27,7 +27,7 @@
     
     while($fila = $resultado->fetch()){
         
-        $estadoPeticiones[$indice] = [$fila['username']];
+        $estadoPeticiones[$indice] = [$fila['username'], $fila['sancion']];
         $indice++;
     }
     

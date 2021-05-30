@@ -7,29 +7,29 @@
 
     $usuario = $_GET['receptor'];
 
-    $sql = 'SELECT emisor, estado FROM amigos WHERE receptor = :receptor AND estado = "ACEPTADO"';
+    $sql = 'SELECT amigos.receptor as receptor, usuarios.sancion as sancion FROM amigos INNER JOIN usuarios ON usuarios.username = amigos.receptor WHERE emisor = :receptor AND estado = "ACEPTADO"';
     $resultado = $conexion->prepare($sql);
     $resultado->execute(array(':receptor' => $usuario));
-    
+
     $indice = 0;
 
     while($fila = $resultado->fetch()){
-        $usuariosRegistrados[$indice] = [$fila['emisor'],$fila['estado']];
+        $usuariosRegistrados[$indice] = [$fila['receptor'],$fila['sancion']];
         $indice++;
     }
 
-    if($indice == 0){
+    if($indice >= 0){
 
-        $sql = 'SELECT receptor, estado FROM amigos WHERE emisor = :receptor AND estado = "ACEPTADO"';
+        $sql = 'SELECT amigos.emisor as emisor, usuarios.sancion as sancion FROM amigos INNER JOIN usuarios ON usuarios.username = amigos.emisor WHERE receptor = :receptor AND estado = "ACEPTADO"';
         $resultado = $conexion->prepare($sql);
         $resultado->execute(array(':receptor' => $usuario));
 
         while($fila = $resultado->fetch()){
-            $usuariosRegistrados[$indice] = [$fila['receptor'],$fila['estado']];
+            $usuariosRegistrados[$indice] = [$fila['emisor'],$fila['sancion']];
             $indice++;
         }
     }
-    
+
     if (empty($usuariosRegistrados)) {
         header('HTTP/ 400  No hay entradas disponibles');
         echo json_encode(array("estado" => "error", "tipo" => "No tienes ningun amigo"));

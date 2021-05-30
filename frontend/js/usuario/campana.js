@@ -70,9 +70,8 @@ function notificacionesCampana({ notificaciones }){
 
     if(window.location.pathname == '/hydraforum/frontend/amigos.html' ){
 
-        let verNotificaciones = document.querySelector('#verNotificaciones');
-        verNotificaciones.parentNode.removeChild(verNotificaciones);
-        numeroNotificaciones.innerHTML = 0;
+        // let verNotificaciones = document.querySelector('#verNotificaciones');
+        // verNotificaciones.parentNode.removeChild(verNotificaciones);
     }
 
 }

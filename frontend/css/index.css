@@ -30,3 +30,104 @@ main{
 .tiempo{
     grid-area: tiempo;
 }
+
+/**/
+:root {
+    --bg_main: #0a1f44;
+    --text_light: #fff;
+    --text_med: #53627c;
+    --text_dark: #1e2432;
+    --red: #ff1e42;
+    --green: green;
+    --orange: #ff8c00;
+    }
+
+
+
+    /* SECTION #1
+    –––––––––––––––––––––––––––––––––––––––––––––––––– */
+  
+
+    .heading {
+    font-weight: bold;
+    font-size: 1rem;
+    letter-spacing: 0.02em;
+    padding: 0 0 0 0;
+    }
+
+    .top-banner form {
+    position: relative;
+    display: flex;
+    align-items: center;
+    }
+
+   
+
+    .top-banner form input::placeholder {
+    color: currentColor; 
+    }
+
+    
+
+    .top-banner form button:hover {
+    background: var(--green);
+    }
+
+    .top-banner form .msg {
+    position: absolute;
+    
+    left: 0;
+    max-width: 450px;
+    min-height: 40px;
+    }
+
+
+    /* SECTION #2
+    –––––––––––––––––––––––––––––––––––––––––––––––––– */
+  
+
+    .ajax-section .cities {
+    display: grid;
+    grid-gap: 32px 20px;
+    grid-template-columns: repeat(4, 1fr);
+    }
+
+    .ajax-section .city {
+    position: relative;
+    padding: 40px 10%;
+    border-radius: 20px;
+    background: var(--text_light);
+    color: var(--text_med);
+    }
+
+    
+
+    .ajax-section figcaption {
+    margin-top: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    }
+
+    .ajax-section .city-temp {
+    font-size: 5rem;
+    font-weight: bold;
+    margin-top: 10px;
+    color: var(--text_dark);
+    }
+
+    .ajax-section .city sup {
+    font-size: 0.5em;
+    }
+
+    .ajax-section .city-name sup {
+    padding: 0.2em 0.6em;
+    border-radius: 30px;
+    color: var(--text_light);
+    background: var(--orange);
+    }
+
+    .ajax-section .city-icon {
+    margin-top: 10px;
+    width: 100px;
+    height: 100px;
+    }
