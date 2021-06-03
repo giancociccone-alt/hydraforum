@@ -27,7 +27,7 @@
 
     if($result->fetch() == 0){
 
-        $sql = 'INSERT INTO amigos (emisor,receptor,estado) VALUES (:emisor, :personasAmistad, "PENDIENTE")';
+        $sql = 'INSERT INTO amigos (emisor,receptor,estado, leido) VALUES (:emisor, :personasAmistad, "PENDIENTE","global")';
 
         $result = $conexion->prepare($sql);
         $result->execute(array(

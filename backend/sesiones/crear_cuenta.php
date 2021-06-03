@@ -31,7 +31,7 @@
 
     if($result->rowCount() == 0){
 
-        $sql = 'INSERT INTO usuarios (username, pass, rol, privacidad) VALUES (:username, hex(AES_ENCRYPT(:pass,"AES")),"2","PUBLICO")';
+        $sql = 'INSERT INTO usuarios (username, pass, rol) VALUES (:username, hex(AES_ENCRYPT(:pass,"AES")),"2")';
 
         $result = $conexion->prepare($sql);
         $result->execute(array(

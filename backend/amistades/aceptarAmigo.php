@@ -35,6 +35,11 @@
             ':receptor' => $usuario
         ));
 
+        // $sql = 'UPDATE amigos SET leido="visto" WHERE receptor = :username AND leido = "individual"';
+
+        // $result = $conexion->prepare($sql);
+        // $result->execute(array(':username' => $usuario));
+
         if ($result->fetch()) {
             header('HTTP/ 200 Entradas devueltas esitosamente');
             echo json_encode(array("estado" => "exito", "usuarios" => "Se ha eliminado la amistad exitosamente"));
@@ -58,6 +63,11 @@
                 ':receptor' => $amigoSeleccionado,
                 ':emisor' => $usuario
             ));
+
+            $sql = 'UPDATE amigos SET leido="visto" WHERE receptor = :username AND leido = "individual"';
+
+            $result = $conexion->prepare($sql);
+            $result->execute(array(':username' => $usuario));
 
             if ($result->fetch()) {
                 header('HTTP/ 200 Entradas devueltas esitosamente');

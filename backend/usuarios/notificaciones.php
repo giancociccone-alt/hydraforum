@@ -5,7 +5,7 @@
 
     $usuario = $_GET['usuario'];
 
-    $sql = 'SELECT COUNT(leido) as mensajeNotificacion, emisor FROM mensajes WHERE receptor = :username AND leido = "no"';
+    $sql = 'SELECT COUNT(leido) as mensajeNotificacion, emisor FROM mensajes WHERE receptor = :username AND leido = "global"';
 
     $result = $conexion->prepare($sql);
     $result->execute(array(':username' => $usuario));
@@ -17,7 +17,7 @@
         $indice++;
     }
 
-    $sql = 'SELECT COUNT(leido) as amigoNotificacion, emisor FROM amigos WHERE receptor = :username AND leido = "no"';
+    $sql = 'SELECT COUNT(leido) as amigoNotificacion, emisor FROM amigos WHERE receptor = :username AND leido = "global"';
 
     $result = $conexion->prepare($sql);
     $result->execute(array(':username' => $usuario));

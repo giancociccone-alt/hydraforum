@@ -24,8 +24,6 @@ if (!usuario) {
     }
 }
 
-
-
 const url = `../backend/entradas/conseguirEntrada.php?usuario=${usuario}`;
 
 fetch(url)

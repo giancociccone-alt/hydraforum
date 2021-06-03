@@ -5,14 +5,15 @@ button.addEventListener('click', crearEntrada);
 
 var inputFile = document.querySelector('input[type="file"]');
 
-fileImagen.addEventListener('change', function () {
-    document.querySelector('#mostrarNombreImagen').innerHTML = fileImagen.files[0].name;
+inputFile.addEventListener('change', function () {
+    document.querySelector('#mostrarNombreImagen').innerHTML = inputFile.files[0].name;
 });
 
 function crearEntrada(){
 
     let dataTitulo = document.querySelector('#titulo').value;
     let dataDescripcion = document.querySelector('#descripcion').value;
+    let dataImagen = inputFile.files[0].name;
 
     let ckEditor = document.querySelector('iframe');
     let ckEditorHtml = ckEditor.contentWindow.document;
@@ -23,7 +24,7 @@ function crearEntrada(){
 
     var data = [
                     { titulo: dataTitulo},
-                    { imagen: inputFile.files[0].name },
+                    { imagen: dataImagen },
                     { datosCk: datosCk },
                     { descripcion: dataDescripcion}
                 ]; 
@@ -50,7 +51,7 @@ function crearEntrada(){
     var data = new FormData()
     data.append('file', inputFile.files[0])
     data.append('nombre_fichero', imagen)
-    data.append('titulo', titulo.titulo)
+    data.append('titulo', titulo)
     data.append('contenido', etiquetaBodyPasaDiv)
     data.append('descripcion', obtenerDescripcion)
     data.append('usuario', usuario)

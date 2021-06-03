@@ -29,15 +29,26 @@ function mostrandoAmigos( {usuarios} ){
 
     let listaAmigos = document.querySelector('#amigos');
 
+    if(usuarios != null){
+
+        let tituloUsuario = document.createElement('h3');
+        listaAmigos.appendChild(tituloUsuario);
+
+        let textTituloUsuario = document.createTextNode('AMIGOS');
+        tituloUsuario.appendChild(textTituloUsuario);
+
+    }
+
     usuarios.forEach( (datosUsuario) => {
 
         let usuario = datosUsuario[0];
         let fechaSancion = datosUsuario[1];
 
         let div = document.createElement('div');
+        div.setAttribute('id','circuloNotificacion');
         listaAmigos.appendChild(div);
 
-        if(sessionStorage.getItem('rol') == 2){
+        if(sessionStorage.getItem('rol') == 1){
 
             /* ELIMINAR */
 

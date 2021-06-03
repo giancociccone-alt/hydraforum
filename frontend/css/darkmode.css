@@ -59,6 +59,11 @@ body.dark .svgSuma{
     fill: #FFFFFF;
 }
 
+
+body.dark .preguntasFrencuentes{
+    color: #FFF;
+}
+
 /*=====================
 =====CREAR ENTRADA=====
 =======================*/
@@ -85,7 +90,7 @@ body.dark .formulario input[type="text"]:focus{
 }
 
 body.dark .formulario input[type="text"]::placeholder{
-    color: #fff;
+    color: #FFF;
 }
 
 /*=========================

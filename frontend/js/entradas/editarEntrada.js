@@ -1,80 +1,70 @@
-datos();
+document.addEventListener('DOMContentLoaded',function (){
+    //Esto sigue siendo una prueba
+    if(localStorage.getItem('idEntrada')){
 
-if(mostrandoDatosEntrada){
-    let entrada = mostrandoDatosEntrada;
-    console.log(entrada);
-}
+        let btnCargarEntrada = document.querySelector('#enviarDatos');
+        btnCargarEntrada.setAttribute('id','cargarDatos');
+        btnCargarEntrada.setAttribute('value','Cargar Datos');
 
+        const editarArticulo = localStorage.getItem('idEntrada');
 
-
-let ckEditor = document.querySelector('#editor1');
-let contenidoCkEditor = document.createTextNode(entrada);
-ckEditor.appendChild(contenidoCkEditor);
-
-async function datos(){
-    localStorage.getItem('idEntrada')
-
-    const editarArticulo = localStorage.getItem('idEntrada');
-
-    try{
         const url = `../backend/entradas/datosEntrada.php?id_entrada=${editarArticulo}`;
+        fetch(url)
+            .then((response) => response.json())
+            .then(mostrandoDatosEntrada)
+            .catch(console.log);
         
-        const respuesta = await fetch(url);
-        const datos = await respuesta.json();
-        const { entrada } = datos;
-        mostrandoDatosEntrada(entrada);
-
-    }catch(error){
-        console.log(error);
     }
+
+})
+
+function mostrandoDatosEntrada({entrada}){
+    // buscar manera que se use esto sin el boton
+    document.querySelector('#cargarDatos').addEventListener('click',function(){
+        let titulo = entrada[0];
+        let imagen = entrada[1];
+        let contenido = entrada[2];
+        let descripcion = entrada[3];
+    
+        let tituloModificado = document.querySelector('#titulo').value = titulo;
+        let imagenModificado = document.querySelector('#mostrarNombreImagen').value = imagen;
+        let descripcionModificado = document.querySelector('#descripcion').value = descripcion;
+    
+        let ckEditor = document.querySelector('iframe').contentWindow.document;
+
+        let ckEditorContenido = ckEditor.querySelector('body').innerHTML = contenido;
+        // let ckEditorContenido = ckEditor.querySelector('body').outerHTML;
+        
+        // var variable = ckEditorContenido.substring(5,122);
+
+        // var etiquetaBodyPasaDiv = obtenerCkEditor.replace('body','div').replace(variable,'').replace('/body','/div');
+
+        // etiquetaBodyPasaDiv.value = contenido;
+
+        // console.log(etiquetaBodyPasaDiv);
+
+        datosEntradaModificado = [tituloModificado, descripcionModificado, imagenModificado, etiquetaBodyPasaDiv, localStorage.getItem('idEntrada')];
+
+        let btnActualizarEntrada = document.querySelector('#cargarDatos');
+        btnActualizarEntrada.setAttribute('value','Actualizar Entrada');
+        btnActualizarEntrada.addEventListener('click',actualizarEntrada);
+
+        actualizarEntrada(datosEntradaModificado);
+
+    })
+
 }
 
+function actualizarEntrada(datosEntradaModificado){
 
-// hola();
-// async function hola(){
-        
-
-//         // fetch(url)
-//         //     .then((response) => response.json())
-//         //     .then(mostrandoDatosEntrada)
-//         //     .catch(console.log);
-
-//         //     let ckEditor = document.querySelector('#editor1');
-//         //     let contenidoCkEditor = document.createTextNode(entrada[2]);
-//         //     ckEditor.appendChild(contenidoCkEditor);
-//     }
-
-
-async function mostrandoDatosEntrada( {  entrada  }  ){
-    console.log(entrada[2]);
-
-    return entrada[2];
-
-    //buscar manera que se use esto sin el boton
-    // let titulo = entrada[0];
-    // let contenido = entrada[2];
-    // let descripcion = entrada[3];
-
-    // document.querySelector('#titulo').value = titulo;
-    // document.querySelector('#descripcion').value = descripcion;
-
-    // console.log(contenido);
-
-    // let ckEditor = document.querySelector('#editor1');
-    //     let contenidoCkEditor = document.createTextNode(entrada[2]);
-    //     ckEditor.appendChild(contenidoCkEditor);
-        
-    
-    
-    // let contenidoCkEditor = document.createTextNode(contenido);
-    // ckEditor.appendChild(contenidoCkEditor);
-
-    // document.querySelector('#enviarDatos').addEventListener('click',function(){
-
-    //     let ckEditorContenido = ckEditor.querySelector('body').innerHTML = contenido;
-        
-    //     datosEntradaModificado = [tituloModificado, descripcionModificado, ckEditorContenido];
-
-    // })
+    const url = `../backend/entradas/actualizarEntrada.php?id_entrada=${localStorage.getItem('idEntrada')}`;
+        fetch(url, {
+                    method: 'POST',
+                    body: datosEntradaModificado
+                }
+            )
+            .then((response) => response.json())
+            // .then(localStorage.removeItem('idEntrada'))
+            .catch(console.log);
 
 }

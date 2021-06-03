@@ -29,15 +29,26 @@ function mostrandoPendientes( {usuarios} ){
 
     let listaPendiente = document.querySelector('#pendiente');
 
+    if(usuarios != null){
+
+        let tituloUsuario = document.createElement('h3');
+        listaPendiente.appendChild(tituloUsuario);
+
+        let textTituloUsuario = document.createTextNode('PENDIENTE');
+        tituloUsuario.appendChild(textTituloUsuario);
+
+    }
+
     usuarios.forEach( (datosUsuario) => {
 
         let usuario = datosUsuario[0];
         let fechaSancion = datosUsuario[1];
 
         let divPendiente = document.createElement('div');
+        divPendiente.setAttribute('id',`notificacion${usuario}`);
         listaPendiente.appendChild(divPendiente);
 
-        if(sessionStorage.getItem('rol') == 2){
+        if(sessionStorage.getItem('rol') == 1){
 
             /* ELIMINAR */
 

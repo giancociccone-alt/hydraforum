@@ -1,3 +1,16 @@
+// usuario = undefined;
+
+// usuario = localStorage.getItem('usuario');
+// if (!usuario) {
+//     usuario = sessionStorage.getItem('usuario');
+//     if (!usuario) {
+//         document.querySelector('#usuario').addEventListener('click',function(e){
+//             e.preventDefault();
+//             window.location = '../index.html';
+//         });
+//     }
+// }
+
 window.addEventListener('DOMContentLoaded', function(){
     var usuario = undefined;
 
@@ -28,16 +41,26 @@ function mostrandoUsuarios({usuarios}){
 
     let listaUsuarios = document.querySelector('#usuarios');
 
+    if(usuarios != null){
+
+        let tituloUsuario = document.createElement('h3');
+        listaUsuarios.appendChild(tituloUsuario);
+
+        let textTituloUsuario = document.createTextNode('USUARIOS');
+        tituloUsuario.appendChild(textTituloUsuario);
+
+    }
+
     usuarios.forEach( (datosUsuario) => {
 
         let usuario = datosUsuario[0];
         let fechaSancion = datosUsuario[1];
-        
+
         let div = document.createElement('div');
         div.setAttribute('class','usuario');
         listaUsuarios.appendChild(div);
 
-        if(sessionStorage.getItem('rol') == 2){
+        if(sessionStorage.getItem('rol') == 1){
 
             /* ELIMINAR */
 
@@ -163,6 +186,8 @@ function solicitudAmistad(e){
     const amigoSeleccionado = e.currentTarget.value;
 
     let datosAmistad = [amigoSeleccionado, usuario];
+
+    console.log(datosAmistad);
 
     const url = `../backend/amistades/agregarAmigo.php`;
     

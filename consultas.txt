@@ -1,5 +1,0 @@
-ul label,
-ul input[type="checkbox"],
-ul li{
-    display: block;
-}

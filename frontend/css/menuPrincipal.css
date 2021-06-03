@@ -14,7 +14,7 @@
 
 body{
     min-height: 100vh;
-    background: url(../imagenes/main.jpg) no-repeat center center fixed;
+    background: url(../imagenes/main2.jpg) no-repeat center center fixed;
     background-size: cover;
 }
 
@@ -22,7 +22,7 @@ body{
     height: 100px;
     min-width: 100%;
     position: absolute;
-    background: url(../imagenes/main.jpg) no-repeat center center fixed;
+    background: url(../imagenes/main2.jpg) no-repeat center center fixed;
     background-size: cover;
     filter: blur(5px);
 }
