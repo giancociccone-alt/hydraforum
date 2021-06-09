@@ -90,36 +90,3 @@ nav li ul{
 nav li:hover ul{
     display: block;
 }
-
-/*=======================
-====BUSQUEDA USUARIO=====
-=========================*/
-
-.input-lupa .input-busquedaUsuario::-webkit-calendar-picker-indicator {
-    display: none;
-}
-
-.input-lupa {
-    background-image: url('../imagenes/camara.png');
-    background-repeat: no-repeat;
-    background-position: 4px center;
-    background-size: 20px;
-    display: flex;
-    align-items: center;
-    width: 175px;
-    padding-left: 28px;
-    height: 30px;
-    border-radius: 3px;
-}
-
-.input-lupa .input-busquedaUsuario {
-    width: 100%;
-    font-size: 0.9em;
-    border: none;
-    border-radius: 2px;
-    height: 29px;
-}
-
-.input-lupa .input-busquedaUsuario:focus {
-    outline: none;
-}

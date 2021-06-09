@@ -44,7 +44,7 @@ function crearEntrada(){
     if (!usuario) {
         usuario = sessionStorage.getItem('usuario');
         if (!usuario) {
-            window.location = '../index.html';
+            window.location.href = '../index.html';
         }
     }
 

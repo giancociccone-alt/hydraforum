@@ -1,193 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="./frontend/css/index.css">
-    <link rel="stylesheet" href="./frontend/css/notificaciones.css">
-    <link rel="stylesheet" href="./frontend/css/menuPrincipal.css">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="./frontend/css/index.css">
+        <link rel="stylesheet" href="./frontend/css/notificaciones.css">
+        <link rel="stylesheet" href="./frontend/css/menuPrincipal.css">
+    </head>
+    <body>
 
-<style>
-        :root {
-        --bg_main: #0a1f44;
-        --text_light: #fff;
-        --text_med: #53627c;
-        --text_dark: #1e2432;
-        --red: #ff1e42;
-        --green: green;
-        --orange: #ff8c00;
-        }
-
-    
-
-        /* SECTION #1
-        –––––––––––––––––––––––––––––––––––––––––––––––––– */
-      
-
-        .heading {
-        font-weight: bold;
-        font-size: 1rem;
-        letter-spacing: 0.02em;
-        padding: 0 0 0 0;
-        }
-
-        .top-banner form {
-        position: relative;
-        display: flex;
-        align-items: center;
-        }
-
-       
-
-        .top-banner form input::placeholder {
-        color: currentColor; 
-        }
-
+        <div class="difuminado"></div>
+        <nav class="transparencia">
+            <ul class="ulGrid">
+                <div class="caja general">
+                    <li><a href="./index.html"><img src="./frontend/imagenes/logoHydra3.png" alt="logo hydraforum"></a></li>
+                    <li>
+                        <a href="./frontend/galeriaPrincipal.html">GALERIA</a>
+                    </li>
+                    <li>
+                        <a href="./frontend/amigos.html" id="usuario">USUARIOS</a>
+                    </li>
+                </div>
+                <div class="caja user">
+                    <li>
+                        <a href="./frontend/ayuda.html">AYUDA</a>
+                    </li>
+                    <li>
+                        <a id="miCuenta">MI CUENTA</a>
+                        <ul>
+                            <li><a id="iniciarSesion" href="./frontend/login.html">INICIAR SESION</a></li>
+                            <li><a id="crearCuenta" href="./frontend/crear_cuenta.html">CREAR CUENTA</a></li>
+                            <li><a id="cerrarSesion" href="./index.html">CERRAR SESION</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <img src="./frontend/imagenes/alarm2.png" id="campana" style="height: 30px; width: 30px;">
+                        <div class="numeroNotificaciones"></div>
+                        <div class="notificaciones" id="notificaciones"></div>
+                    </li>
+                </div>
+            </ul>
+        </nav>
         
+        <main>
+            <div class="contenedor">
 
-        .top-banner form button:hover {
-        background: var(--green);
-        }
+                <div class="mapa">
+                    <iframe loading="lazy" src="https://www.meteoblue.com/es/tiempo/maps/widget/madrid_espa%c3%b1a_3117735?windAnimation=0&windAnimation=1&gust=0&gust=1&satellite=0&satellite=1&coronaWeatherScore=0&coronaWeatherScore=1&geoloc=fixed&tempunit=C&windunit=km%252Fh&lengthunit=metric&zoom=5&autowidth=auto"  frameborder="0" scrolling="NO" allowtransparency="true" sandbox="allow-same-origin allow-scripts allow-popups allow-popups-to-escape-sandbox" style="width: 100%; height: 720px"></iframe><div><!-- DO NOT REMOVE THIS LINK --><a href="https://www.meteoblue.com/es/tiempo/webmap/beta/madrid_espa%c3%b1a_3117735?utm_source=weather_widget&utm_medium=linkus&utm_content=map&utm_campaign=Weather%2BWidget" target="_blank"></a></div>
+                </div> 
 
-        .top-banner form .msg {
-        position: absolute;
-        
-        left: 0;
-        max-width: 450px;
-        min-height: 40px;
-        }
+                <div class="tiempo">
 
+                    <section class="top-banner">
+                        <div class="container">
+                            <form>
+                                <input type="text" placeholder="Search for a city" autofocus>
+                                <button type="submit">CONFIRMAR</button>
+                                <span class="msg"></span>
+                            </form>
+                        </div>
+                    </section>
+                    <section class="ajax-section">
+                        <div class="container">
+                            <ul class="cities"></ul>
+                        </div>
+                    </section>
 
-        /* SECTION #2
-        –––––––––––––––––––––––––––––––––––––––––––––––––– */
-      
+                </div>
 
-        .ajax-section .cities {
-        display: grid;
-        grid-gap: 32px 20px;
-        grid-template-columns: repeat(4, 1fr);
-        }
+                <div>
+                    <h3>Mapa de alertas</h3>
+                    <a target="_blank" href="http://www.meteoalarm.eu/index2.php?lang=ES&amp;country=ES&amp;day=0%22%3E"><img style="border: 2px solid ; width: 315px; height: 242px; top: 281px; left: 573px;" title="Previsto para hoy por Meteoalarm" alt="Previsto para hoy por Meteoalarm" src="http://www.meteoalarm.eu/map.php?iso=ES&amp;data=0&amp;rnd=1280573319%22%3E"></a>
+                </div>
 
-        .ajax-section .city {
-        position: relative;
-        padding: 40px 10%;
-        border-radius: 20px;
-        background: var(--text_light);
-        color: var(--text_med);
-        }
+                <div>
+                    <h3>Mapa de rayos</h3>
+                    <a target="_blank" href="http://es.blitzortung.org/live_lightning_maps.php?map=10"><img style="border: 0px solid ; top: 3091px; left: 922px; width: 315px; height: 242px;" alt="" src="http://img.allmetsat.com/sat/anim-image_b_eu.gif"></a>
+                </div>
 
-        
+                <div>
+                    <h3>Contaminacion atmosferica</h3>
+                    <a target="_blank" href="http://www.bsc.es/caliope/es/pronosticos?default_model=0&amp;default_domain=1"><img style="border: 0px solid ; top: 12704px; left: 315px; width: 397px; height: 242px;" alt="" src="http://www.bsc.es/int/AQFcv2/MN/ip/latest/BSC-ES_FORECAST_NOx_ANIM.gif"></a>
+                </div>
 
-        .ajax-section figcaption {
-        margin-top: 10px;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-        }
-
-        .ajax-section .city-temp {
-        font-size: 5rem;
-        font-weight: bold;
-        margin-top: 10px;
-        color: var(--text_dark);
-        }
-
-        .ajax-section .city sup {
-        font-size: 0.5em;
-        }
-
-        .ajax-section .city-name sup {
-        padding: 0.2em 0.6em;
-        border-radius: 30px;
-        color: var(--text_light);
-        background: var(--orange);
-        }
-
-        .ajax-section .city-icon {
-        margin-top: 10px;
-        width: 100px;
-        height: 100px;
-        }
-
-
-       
-    
-</style>
-</head>
-<body>
-
-    <div class="difuminado">
-    </div>
-    <nav class="transparencia">
-        <ul class="ulGrid">
-            <div class="caja general">
-                <li><a href="./index.html"><img src="./frontend/imagenes/logoHydra3.png" alt="logo hydraforum"></a></li>
-                <li>
-                    <a href="./frontend/galeriaPrincipal.html">GALERIA</a>
-                </li>
-                <li>
-                    <a href="./frontend/amigos.html" id="usuario">USUARIOS</a>
-                </li>
             </div>
-            <div class="caja user">
-                <li>
-                    <a href="./frontend/ayuda.html">AYUDA</a>
-                </li>
-                <li>
-                    <a id="miCuenta">MI CUENTA</a>
-                    <ul>
-                        <li><a id="iniciarSesion" href="./frontend/login.html">INICIAR SESION</a></li>
-                        <li><a id="crearCuenta" href="./frontend/crear_cuenta.html">CREAR CUENTA</a></li>
-                        <li><a id="cerrarSesion" href="./index.html">CERRAR SESION</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <img src="./frontend/imagenes/alarm2.png" id="campana" style="height: 30px; width: 30px;">
-                    <div class="numeroNotificaciones"></div>
-                    <div class="notificaciones" id="notificaciones"></div>
-                </li>
-            </div>
-        </ul>
-    </nav>
-    
-    <main>
-        <div class="container">
+        </main> 
+        
+        <script src="./frontend/js/index.js"></script>
+        <script src="./frontend/js/usuario/campana.js"></script>
+        <script src="./frontend/js/sesiones/cerrarSesion.js"></script>
+        <script src="https://kit.fontawesome.com/ef546ce5ec.js" crossorigin="anonymous"></script>
 
-            <div class="mapa">
-                <iframe loading="lazy" style="height: 747px;width: 100%;" src="https://www.meteoblue.com/es/tiempo/maps/widget/madrid_espa%c3%b1a_3117735?windAnimation=0&windAnimation=1&gust=0&gust=1&satellite=0&satellite=1&coronaWeatherScore=0&coronaWeatherScore=1&geoloc=fixed&tempunit=C&windunit=km%252Fh&lengthunit=metric&zoom=5&autowidth=auto"  frameborder="0" scrolling="NO" allowtransparency="true" sandbox="allow-same-origin allow-scripts allow-popups allow-popups-to-escape-sandbox" style="width: 100%; height: 720px"></iframe><div><!-- DO NOT REMOVE THIS LINK --><a href="https://www.meteoblue.com/es/tiempo/webmap/beta/madrid_espa%c3%b1a_3117735?utm_source=weather_widget&utm_medium=linkus&utm_content=map&utm_campaign=Weather%2BWidget" target="_blank"></a></div>
-            </div> 
-
-                  <section class="top-banner tiempo">
-                    <div class="container">
-                      
-                      <form>
-                        <input type="text" placeholder="Search for a city" autofocus>
-                        <button type="submit">CONFIRMAR</button>
-                        <span class="msg"></span>
-                      </form>
-                    </div>
-                  </section>
-                  <section class="ajax-section">
-                    <div class="container">
-                      <ul class="cities"></ul>
-                    </div>
-                  </section>
-                  
-           
-            
-            <!-- <div class="video">
-                <iframe id="video_aemet" loading="lazy" name="video_aemet" src="https://www.aemet.es/es/videos" width="350" height="375" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" frameborder="0" scrolling="no">
-            </div>  -->
-
-        </div>
-    </main> 
-    
-    <script src="./frontend/js/index.js"></script>
-    <script src="./frontend/js/usuario/campana.js"></script>
-    <script src="./frontend/js/sesiones/cerrar_sesion.js"></script>
-    <!-- <script src="./frontend/js/servicioWeb.js"></script> -->
-    <script src="https://kit.fontawesome.com/ef546ce5ec.js" crossorigin="anonymous"></script>
-
-</body>
+    </body>
 </html>

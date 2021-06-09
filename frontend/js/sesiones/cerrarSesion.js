@@ -25,13 +25,18 @@ if(usuario){
     }
 
     document.querySelector("#cerrarSesion").addEventListener('click',function(e){
-        sessionStorage.clear();
-        localStorage.clear();
+
         if(window.location.pathname == "/hydraforum/index.html"){
             document.querySelector("#cerrarSesion").setAttribute('href','./index.html');
         }else{
             document.querySelector("#cerrarSesion").setAttribute('href','../index.html');
         }
+
+        localStorage.removeItem('usuario');
+        localStorage.removeItem('rol');
+        
+        sessionStorage.removeItem('usuario');
+        sessionStorage.removeItem('rol');
 
     });
 

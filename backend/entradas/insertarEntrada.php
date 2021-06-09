@@ -29,15 +29,9 @@
     }
 
     $destination = "../../frontend/imagenesUsuarios/$usuario/$ficheroNombre";
-    // $destination = __DIR__. "/../frontend/imagenesUsuarios/$usuario/$ficheroNombre";
-
-    // $destination = "../frontend/imagenesUsuarios/$usuario/$ficheroNombre";
 
     if( is_file($destination)){
-        header('HTTP/ 400 Subida fallida');
-        echo json_encode(array("estado" => "true", "mensaje" => "ERROR: Ya existe almacenado un fichero con ese nombre"));
-        @unlink(ini_get('upload_tmp_dir').$_FILES["name"]['tmp_name']);
-        exit;
+        unlink("../../frontend/imagenesUsuarios/$usuario/$ficheroNombre");
     }
 
     if( ! @move_uploaded_file($source, $destination)){

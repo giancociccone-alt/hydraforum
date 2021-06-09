@@ -1,79 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=<div class="container">
-    <link rel="stylesheet" href="./css/galeriaPrincipal.css">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Parisienne&display=swap" rel="stylesheet">   
-    <title>Document</title>
-</head>
-<body>
-    
-    <center><div class="titulo">Galería Fotográfica</div></center>
-      
-            <div class="container">
-                <div class="cardWrap">
-                    <div class="card" id="primavera">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=<div class="container">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link rel="stylesheet" href="./css/menuPrincipal.css">
+        <link rel="stylesheet" href="./css/galeriaPrincipal.css">
+        <link href="https://fonts.googleapis.com/css2?family=Parisienne&display=swap" rel="stylesheet">   
+        <title>Document</title>
+    </head>
+    <body>
+        
+        <div class="difuminado"></div>
+        <nav class="transparencia">
+            <ul class="ulGrid">
+                <div class="caja general">
+                    <li><a href="../index.html"><img src="./imagenes/logoHydra3_dark.png" alt="logo hydraforum"></a></li>
+                    <li>
+                        <a href="./galeriaPrincipal.html">GALERIA</a>
+                    </li>
+                    <li>
+                        <a href="./amigos.html" id="usuario">USUARIOS</a>
+                    </li>
+                </div>
+                <div class="caja user">
+                    <li>
+                        <a href="./ayuda.html">AYUDA</a>
+                    </li>
+                    <li>
+                        <a id="miCuenta">MI CUENTA</a>
+                        <ul>
+                            <li><a id="iniciarSesion" href="./login.html">INICIAR SESION</a></li>
+                            <li><a id="crearCuenta" href="./crear_cuenta.html">CREAR CUENTA</a></li>
+                            <li><a id="cerrarSesion" href="../index.html">CERRAR SESION</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <img src="./imagenes/alarm2.png" id="campana" style="height: 30px; width: 30px;">
+                        <div class="numeroNotificaciones"></div>
+                        <div class="notificaciones" id="notificaciones"></div>
+                    </li>
+                </div>
+            </ul>
+        </nav>
+
+        <center><div class="titulo">Galería Fotográfica</div></center>
+        
+        <div class="container">
+            <div class="cardWrap">
+                <div class="card" id="primavera">
                     <div class="cardBg" style="background-image: url('./imagenesGaleria/primavera.jpg');"></div>
                     <div class="cardInfo">
-                        <h3 class="cardTitle">
-                        PRIMAVERA
-                        </h3>
-                        <!-- <p>A subject which deals with.... Well Maths!</p> -->
-                    </div>
+                        <h3 class="cardTitle">PRIMAVERA</h3>
                     </div>
                 </div>
-                
-                <div class="cardWrap">
-                    <div class="card" id="verano">
+            </div>
+            
+            <div class="cardWrap">
+                <div class="card" id="verano">
                     <div class="cardBg" style="background-image: url('./imagenesGaleria/verano.jpg');"></div>
                     <div class="cardInfo">
-                        <h3 class="cardTitle">
-                        VERANO
-                        </h3>
-                        <!-- <p>A subject which deals with.... Well Maths!</p> -->
-                    </div>
+                        <h3 class="cardTitle">VERANO</h3>
                     </div>
                 </div>
-                
-                <div class="cardWrap">
-                    <div class="card " id="otonnio">
+            </div>
+            
+            <div class="cardWrap">
+                <div class="card " id="otonnio">
                     <div class="cardBg"style="background-image:url('./imagenesGaleria/otoño.jpg');"></div>
                     <div class="cardInfo">
-                        <h3 class="cardTitle">
-                        OTOÑO
-                        </h3>
-                        <!-- <p>A subject which deals with.... Well Maths!</p> -->
-                    </div>
+                        <h3 class="cardTitle">OTOÑO</h3>
                     </div>
                 </div>
-                
-                <div class="cardWrap">
-                    <div class="card" id="invierno">
+            </div>
+            
+            <div class="cardWrap">
+                <div class="card" id="invierno">
                     <div class="cardBg" style="background-image: url('./imagenesGaleria/invierno.jpg');"></div>
                     <div class="cardInfo">
-                        <h3 class="cardTitle">
-                        INVIERNO
-                        </h3>
-                        <!-- <p>A subject which deals with.... Well Maths!</p> -->
-                    </div>
+                        <h3 class="cardTitle">INVIERNO</h3>
                     </div>
                 </div>
-                
             </div>
-            <center><button class="button" id="paginaPrincipal">
-                Página Inicio
+            
+        </div>
+
+        <!-- <center>
+            <button class="button" id="paginaPrincipal">Página Inicio
                 <div class="button__horizontal"></div>
                 <div class="button__vertical"></div>
-            </button></center>
+            </button>
+        </center> -->
 
-    
-
-    
-   
-    <script src="./js/galeriaPrincipal.js"></script>
-</body>
-
+        <script src="./js/galeriaPrincipal.js"></script>
+        <script src="./js/sesiones/cerrarSesion.js"></script>
+    </body>
 </html>

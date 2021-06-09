@@ -20,7 +20,7 @@ document.querySelector('#formLogin').addEventListener('click',function(e){
         }
     }
 
-    const url = `../backend/sesiones/iniciar_sesion.php`;
+    const url = `../backend/sesiones/login.php`;
 
     fetch(url, {
         method: 'POST',

@@ -1,37 +1,41 @@
 let numeroNotificaciones = document.querySelector('.numeroNotificaciones');
 let campana = document.querySelector('#campana');
 
-usuario = undefined;
+window.addEventListener('DOMContentLoaded', function(){
 
-usuario = localStorage.getItem('usuario');
-if (!usuario) {
-    usuario = sessionStorage.getItem('usuario');
+    usuario = undefined;
+
+    usuario = localStorage.getItem('usuario');
     if (!usuario) {
-        //nada
+        usuario = sessionStorage.getItem('usuario');
+        if (!usuario) {
+            //nada
+        }
     }
-}
 
-if(usuario){
+    if(usuario){
 
 
-    if(window.location.pathname == "/hydraforum/index.html"){
+        if(window.location.pathname == "/hydraforum/index.html"){
 
-        const url = `./backend/usuarios/notificaciones.php?usuario=${usuario}`;
+            const url = `./backend/usuarios/notificaciones.php?usuario=${usuario}`;
 
-        fetch(url)
-            .then((response) => response.json())
-            .then(notificacionesCampana)
-            .catch(console.log);
-
-    }else{
-        const url = `../backend/usuarios/notificaciones.php?usuario=${usuario}`;
             fetch(url)
-            .then((response) => response.json())
-            .then(notificacionesCampana)
-            .catch(console.log);
+                .then((response) => response.json())
+                .then(notificacionesCampana)
+                .catch(console.log);
+
+        }else{
+            const url = `../backend/usuarios/notificaciones.php?usuario=${usuario}`;
+                fetch(url)
+                .then((response) => response.json())
+                .then(notificacionesCampana)
+                .catch(console.log);
+        }
+        
     }
-    
-}
+
+});
 
 function notificacionesCampana({ notificaciones }){
 

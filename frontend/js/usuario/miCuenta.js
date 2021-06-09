@@ -1,35 +1,41 @@
+window.addEventListener('DOMContentLoaded', function(){
 
-// let opcionesFiltrarFechaEntrada = {'ASC' : 'Mas reciente', 'DES' : 'Mas antiguo'};
+    usuario = undefined;
 
-// for(var key in opcionesFiltrarFechaEntrada){
+    usuario = localStorage.getItem('usuario');
 
-//     let opcionFechaEntrada = document.createElement('opcion');
-//     opcionFechaEntrada.setAttribute('value',key);
-//     selectFiltrarFechaEntrada.appendChild(opcionFechaEntrada);
+    var verEntradaAmigo = localStorage.getItem('verEntradaAmigo');
 
-//     let textOpcionFechaEntrada = document.createTextNode(opcionesFiltrarFechaEntrada[key]);
-//     opcionFechaEntrada.appendChild(textOpcionFechaEntrada);
-// }
+    console.log(verEntradaAmigo);
 
-usuario = undefined;
+    if(verEntradaAmigo){
 
-usuario = localStorage.getItem('usuario');
-if (!usuario) {
-    usuario = sessionStorage.getItem('usuario');
-    if (!usuario) {
-        document.querySelector('#miCuenta').addEventListener('click',function(e){
-            e.preventDefault();
-            window.location = '../index.html';
-        });
+        const url = `../backend/entradas/conseguirEntrada.php?usuario=${verEntradaAmigo}`;
+
+        fetch(url)
+            .then((response) => response.json())
+            .then(mostrandoDatos)
+            .catch(console.log);
+
+    }else{
+
+        if (!usuario) {
+            usuario = sessionStorage.getItem('usuario');
+            if (!usuario) {
+                window.location.href = '../index.html';
+            }
+        }
+
+        const url = `../backend/entradas/conseguirEntrada.php?usuario=${usuario}`;
+
+        fetch(url)
+            .then((response) => response.json())
+            .then(mostrandoDatos)
+            .catch(console.log);
+
     }
-}
 
-const url = `../backend/entradas/conseguirEntrada.php?usuario=${usuario}`;
-
-fetch(url)
-    .then((response) => response.json())
-    .then(mostrandoDatos)
-    .catch(console.log);
+});
 
 function mostrandoDatos({entradas}){
 
@@ -53,8 +59,16 @@ function mostrandoDatos({entradas}){
     nombreUsuario.setAttribute('class','ubicar');
     articulos.appendChild(nombreUsuario);
 
-    let textNombreUsuario = document.createTextNode(`Articulos del usuario ${usuario}`);
-    nombreUsuario.appendChild(textNombreUsuario);
+    var verEntradaAmigo = localStorage.getItem('verEntradaAmigo');
+
+    if(verEntradaAmigo){
+        let textNombreUsuario = document.createTextNode(`Articulos del usuario ${verEntradaAmigo}`);
+        nombreUsuario.appendChild(textNombreUsuario);
+        localStorage.removeItem('verEntradaAmigo');
+    }else{
+        let textNombreUsuario = document.createTextNode(`Articulos del usuario ${usuario}`);
+        nombreUsuario.appendChild(textNombreUsuario);
+    }
 
     for(let informacionEntrada of entradas){
         
@@ -112,21 +126,25 @@ function mostrandoDatos({entradas}){
         tresPuntos.setAttribute('style','height:50px;');
         pFocus.appendChild(tresPuntos);
 
-        let buttonEditar = document.createElement('input');
-        buttonEditar.setAttribute('type','button');
-        buttonEditar.setAttribute('id','buttonEditar');
-        buttonEditar.setAttribute('id',entradaId);
-        buttonEditar.setAttribute('value','Editar articulo');
-        buttonEditar.addEventListener('click',editarArticulo);
-        divTresPuntos.appendChild(buttonEditar);
+        if(usuario){
 
-        let buttonEliminar = document.createElement('input');
-        buttonEliminar.setAttribute('type','button');
-        buttonEliminar.setAttribute('id','buttonEliminar');
-        buttonEliminar.setAttribute('id',entradaId);
-        buttonEliminar.setAttribute('value','Eliminar entrada');
-        buttonEliminar.addEventListener('click',eliminarArticulo);
-        divTresPuntos.appendChild(buttonEliminar);
+            let buttonEditar = document.createElement('input');
+            buttonEditar.setAttribute('type','button');
+            buttonEditar.setAttribute('id','buttonEditar');
+            buttonEditar.setAttribute('id',entradaId);
+            buttonEditar.setAttribute('value','Editar articulo');
+            buttonEditar.addEventListener('click',editarArticulo);
+            divTresPuntos.appendChild(buttonEditar);
+
+            let buttonEliminar = document.createElement('input');
+            buttonEliminar.setAttribute('type','button');
+            buttonEliminar.setAttribute('id','buttonEliminar');
+            buttonEliminar.setAttribute('id',entradaId);
+            buttonEliminar.setAttribute('value','Eliminar entrada');
+            buttonEliminar.addEventListener('click',eliminarArticulo);
+            divTresPuntos.appendChild(buttonEliminar);
+
+        }
 
         //Fin trespuntos
 

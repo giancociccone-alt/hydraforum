@@ -6,7 +6,7 @@ document.querySelector('#formLogin').addEventListener('click',function(e){
 
     let datosUsuario = [usuario,password,repeatPassword];
 
-    const url = `../backend/sesiones/crear_cuenta.php`;
+    const url = `../backend/sesiones/crearCuenta.php`;
 
     fetch(url, {
         method: 'POST',
@@ -25,7 +25,7 @@ function recibiendoDatos({estado, mensaje}){
     if(estado === "true"){
         Swal.fire({
                 icon: 'success',
-                title: 'Creacion de cuenta exitosamente',
+                title: mensaje,
                 timer: 3000,
                 showConfirmButton: false
             }
@@ -36,7 +36,7 @@ function recibiendoDatos({estado, mensaje}){
     }else{
         Swal.fire({
                 icon: 'error',
-                title: 'Hubo un error a crear la cuenta',
+                title: mensaje,
                 timer: 3000,
                 showConfirmButton: false
             }

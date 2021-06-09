@@ -27,7 +27,7 @@ function recibiendoDatos({estado, mensaje}){
     if(estado === "true"){
         Swal.fire({
                 icon: 'success',
-                title: 'Se ha restablecido la contraseña',
+                title: mensaje,
                 timer: 3000,
                 showConfirmButton: false
             }
@@ -38,7 +38,7 @@ function recibiendoDatos({estado, mensaje}){
     }else{
         Swal.fire({
                 icon: 'error',
-                title: 'El usuario o contraseña estan incorrectos',
+                title: mensaje,
                 timer: 3000,
                 showConfirmButton: false
             }

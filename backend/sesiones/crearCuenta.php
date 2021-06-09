@@ -18,16 +18,22 @@
 
     }
 
+    $sql = 'SELECT username FROM usuarios WHERE username=:username';
+
+    $result = $conexion->prepare($sql);
+    $result->execute(array(':username' => $username));
+
+    if($result->rowCount() == 1){
+        header('HTTP/ 400 Entrada Fallida');
+        echo json_encode(array("estado" => "false", "mensaje" => "Ya existe un usuario con ese nombre"));
+        exit();
+    }
+
     if($password != $repetirPassword){
         header('HTTP/ 400 Entrada Fallida');
         echo json_encode(array("estado" => "false", "mensaje" => "La contraseñas no coinciden. Por favor, ingrese las contraseñas correctamente"));
         exit();
     }
-
-    $sql = 'SELECT username FROM usuarios WHERE username=:username';
-
-    $result = $conexion->prepare($sql);
-    $result->execute(array(':username' => $username));
 
     if($result->rowCount() == 0){
 
@@ -39,15 +45,8 @@
             ':pass' => $password
         ));
         
-        if($result->rowCount() == 0){
-            header('HTTP/ 400 Entrada Fallida');
-            echo json_encode(array("estado" => "false", "mensaje" => "Hubo un fallo en la creacion de la cuenta"));
-            exit();
-        }
-
         header('HTTP/ 200 Entrada Exitosa');
         echo json_encode(array("estado" => "true", "mensaje" => "Creacion de la cuenta exitosamente"));
-
     }
 
 ?>

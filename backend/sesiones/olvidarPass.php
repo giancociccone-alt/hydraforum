@@ -17,6 +17,17 @@
         $repetirPassword = $datosUsuario[2];
 
     }
+    
+    $sql = 'SELECT * FROM usuarios WHERE username=:username';
+    
+    $result = $conexion->prepare($sql);
+    $result->execute(array(':username' => $username));
+    
+    if($result->rowCount() == 0){
+        header('HTTP/ 400 Entrada Fallida');
+        echo json_encode(array("estado" => "false", "mensaje" => "El usuario no existe"));
+        exit();
+    }
 
     if($password != $repetirPassword){
         header('HTTP/ 400 Entrada Fallida');
@@ -24,12 +35,7 @@
         exit();
     }
 
-    $sql = 'SELECT * FROM usuarios WHERE username=:username';
-
-    $result = $conexion->prepare($sql);
-    $result->execute(array(':username' => $username));
-
-    if($result->rowCount() > 0){
+    if($result->rowCount() == 1){
 
         $sql = 'UPDATE usuarios SET pass = hex(AES_ENCRYPT(:pass,"AES")) WHERE username = :username';
 
@@ -38,16 +44,10 @@
             ':username' => $username,
             ':pass' => $password
         ));
-    
+        
+        header('HTTP/ 200 Entrada Exitosa');
+        echo json_encode(array("estado" => "true", "mensaje" => "Se ha modificado la contraseña"));
     }
 
-    if($result->rowCount() == 0){
-        header('HTTP/ 400 Entrada Fallida');
-        echo json_encode(array("estado" => "false", "mensaje" => "Hubo un fallo en el intento de cambio de contraseña"));
-        exit();
-    }
-
-    header('HTTP/ 200 Entrada Exitosa');
-    echo json_encode(array("estado" => "true", "mensaje" => "Creacion de la cuenta exitosamente"));
 
 ?>

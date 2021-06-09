@@ -1,40 +1,38 @@
 window.addEventListener('DOMContentLoaded', function(){
-
+    
     var usuario = undefined;
 
     usuario = localStorage.getItem('usuario');
     if (!usuario) {
         usuario = sessionStorage.getItem('usuario');
         if (!usuario) {
-            document.querySelector('#usuario').addEventListener('click',function(e){
-                e.preventDefault();
-            });
+            window.location.href = '../index.html';
         }
     }
 
     if(usuario){
 
-        const url = `../backend/usuarios/listaPendiente.php?usuario=${usuario}`;
-
+        const url = `../backend/usuarios/listaUsuarios.php?username=${usuario}`;
+    
         fetch(url)
             .then((response) => response.json())
-            .then(mostrandoPendientes)
+            .then(mostrandoUsuarios)
             .catch(console.log);
 
     }
-    
+
 });
 
-function mostrandoPendientes( {usuarios} ){
+function mostrandoUsuarios({usuarios}){
 
-    let listaPendiente = document.querySelector('#pendiente');
+    let listaUsuarios = document.querySelector('#usuarios');
 
     if(usuarios != null){
 
         let tituloUsuario = document.createElement('h3');
-        listaPendiente.appendChild(tituloUsuario);
+        listaUsuarios.appendChild(tituloUsuario);
 
-        let textTituloUsuario = document.createTextNode('PENDIENTE');
+        let textTituloUsuario = document.createTextNode('USUARIOS');
         tituloUsuario.appendChild(textTituloUsuario);
 
     }
@@ -44,29 +42,11 @@ function mostrandoPendientes( {usuarios} ){
         let usuario = datosUsuario[0];
         let fechaSancion = datosUsuario[1];
 
-        let divPendiente = document.createElement('div');
-        divPendiente.setAttribute('id',`notificacion${usuario}`);
-        listaPendiente.appendChild(divPendiente);
+        let div = document.createElement('div');
+        div.setAttribute('class','usuario');
+        listaUsuarios.appendChild(div);
 
         if(sessionStorage.getItem('rol') == 1){
-
-            /* ELIMINAR */
-
-            // let labelUsuario = document.createElement('label');
-            // labelUsuario.setAttribute('for',`eliminar${usuario}`);
-            // divPendiente.appendChild(labelUsuario);
-            
-            // let iEliminarUsuario = document.createElement('i');
-            // iEliminarUsuario.setAttribute('class','fas fa-heart-broken iAmigo');
-            // labelUsuario.appendChild(iEliminarUsuario);
-            
-            // let EliminarUsuario = document.createElement('input');
-            // EliminarUsuario.setAttribute('type','button');
-            // EliminarUsuario.setAttribute('id',`eliminar${usuario}`);
-            // EliminarUsuario.setAttribute('class',`btnEliminarUsuario`);
-            // EliminarUsuario.setAttribute('value',usuario);
-            // EliminarUsuario.addEventListener('click',eliminarAmistad);
-            // divPendiente.appendChild(EliminarUsuario);
 
             /* ELIMINAR SANCIONAR */
 
@@ -75,17 +55,17 @@ function mostrandoPendientes( {usuarios} ){
                 labelQuitarSancion.setAttribute('id',usuario);
                 labelQuitarSancion.setAttribute('name',`${usuario}`);
                 labelQuitarSancion.addEventListener('click', quitarSancion);
-                divPendiente.appendChild(labelQuitarSancion);
+                div.appendChild(labelQuitarSancion);
 
                 let quitarSancionUsuario = document.createElement('input');
                 quitarSancionUsuario.setAttribute('type','button');
                 quitarSancionUsuario.setAttribute('id',`${usuario}`);
                 quitarSancionUsuario.setAttribute('class',`btnSancionar${usuario}`);
                 quitarSancionUsuario.setAttribute('value','Quitar sancion');
-                divPendiente.appendChild(quitarSancionUsuario);
+                div.appendChild(quitarSancionUsuario);
 
                 let iQuitarSancionUsuario = document.createElement('i');
-                iQuitarSancionUsuario.setAttribute('class','fas fa-heart-broken iAmigo');
+                iQuitarSancionUsuario.setAttribute('class','far fa-calendar-times iAmigo');
                 labelQuitarSancion.appendChild(iQuitarSancionUsuario);
             }
 
@@ -95,108 +75,67 @@ function mostrandoPendientes( {usuarios} ){
             labelSancionarUsuario.setAttribute('id',usuario);
             labelSancionarUsuario.setAttribute('name',`${usuario}`);
             labelSancionarUsuario.addEventListener('click',enviarFechaSancion);
-            divPendiente.appendChild(labelSancionarUsuario);
+            div.appendChild(labelSancionarUsuario);
 
             let sancionarUsuario = document.createElement('input');
             sancionarUsuario.setAttribute('type','date');
             sancionarUsuario.setAttribute('id',`${usuario}`);
             sancionarUsuario.setAttribute('class',`btnSancionar${usuario}`);
-            divPendiente.appendChild(sancionarUsuario);
+            div.appendChild(sancionarUsuario);
             
             let iSancionarUsuario = document.createElement('i');
-            iSancionarUsuario.setAttribute('class',`fas fa-heart-broken iAmigo`);
+            iSancionarUsuario.setAttribute('class',`far fa-calendar-times iAmigo`);
             labelSancionarUsuario.appendChild(iSancionarUsuario);
-
+            
         }
+
             let nombreUsuario = document.createElement('input');
             nombreUsuario.setAttribute('type','text');
             nombreUsuario.setAttribute('class','nombreUsuario');
             nombreUsuario.setAttribute('disabled','true');
             nombreUsuario.setAttribute('value',usuario);
-            divPendiente.appendChild(nombreUsuario);
+            div.appendChild(nombreUsuario);
 
             let pEstadoAmistad = document.createElement('p');
-            divPendiente.appendChild(pEstadoAmistad);
+            pEstadoAmistad.setAttribute('class','estadoUsuario');
+            div.appendChild(pEstadoAmistad);
 
-            let textEstadoAmistad = document.createTextNode('DESCONOCIDO/PENDIENTE');
+            let textEstadoAmistad = document.createTextNode('DESCONOCIDO');
             pEstadoAmistad.appendChild(textEstadoAmistad);
 
-            //Inicio de opcion para aceptar usuario
+            let containerOpciones = document.createElement('div');
+            containerOpciones.setAttribute('class','containerOpcionesUsuario');
+            div.appendChild(containerOpciones);
 
-            let labelAceptar = document.createElement('label');
-            labelAceptar.setAttribute('for',`aceptar${usuario}`);
-            divPendiente.appendChild(labelAceptar);
+            let labelUsuarios = document.createElement('label');
+            labelUsuarios.setAttribute('id',`username`);
+            labelUsuarios.setAttribute('for',`usuario${usuario}`);
+            containerOpciones.appendChild(labelUsuarios);
 
-            let iAceptar = document.createElement('i');
-            iAceptar.setAttribute('class','fas fa-check iAceptar');
-            labelAceptar.appendChild(iAceptar);
+            let iUsuario = document.createElement('i');
+            iUsuario.setAttribute('class','fas fa-user-plus iListaUsuario');
+            labelUsuarios.appendChild(iUsuario);
 
-            let botonAceptar = document.createElement('input');
-            botonAceptar.setAttribute('type','button');
-            botonAceptar.setAttribute('id',`aceptar${usuario}`);
-            botonAceptar.setAttribute('class',`btnAceptarUsuario`);
-            botonAceptar.setAttribute('value',usuario);
-            botonAceptar.addEventListener('click',aceptarAmigo);
-            divPendiente.appendChild(botonAceptar);
+            let agregarUsuario = document.createElement('input');
+            agregarUsuario.setAttribute('type','button');
+            agregarUsuario.setAttribute('class','btnAgregarUsuario');
+            agregarUsuario.setAttribute('id',`usuario${usuario}`);
+            agregarUsuario.setAttribute('value',usuario);
+            agregarUsuario.addEventListener('click',solicitudAmistad);
+            containerOpciones.appendChild(agregarUsuario);
 
-            //Fin de opcion para aceptar usuario
-            
-            //Inicio de opcion para rechazar usuario
+            let amistadesComun = document.createElement('p');
+            amistadesComun.setAttribute('class','amistadComun');
+            div.appendChild(amistadesComun);
 
-            let labelRechazar = document.createElement('label');
-            labelRechazar.setAttribute('for',`rechazar${usuario}`);
-            divPendiente.appendChild(labelRechazar);
-
-            let iRechazar = document.createElement('i');
-            iRechazar.setAttribute('class','fas fa-user-times iRechazar');
-            labelRechazar.appendChild(iRechazar);
-
-            let botonRechazar = document.createElement('input');
-            botonRechazar.setAttribute('type','button');
-            botonRechazar.setAttribute('id',`rechazar${usuario}`);
-            botonRechazar.setAttribute('class',`btnRechazarUsuario`);
-            botonRechazar.setAttribute('value',usuario);
-            botonRechazar.addEventListener('click',rechazarUsuario);
-            divPendiente.appendChild(botonRechazar);
-
-            //Fin de opcion para rechazar usuario
+            let textAmistadesComun = document.createTextNode('Contador');
+            amistadesComun.appendChild(textAmistadesComun);
         
     });
 
- }
-
-function aceptarAmigo(e){
-
-    var usuario = undefined;
-
-    usuario = localStorage.getItem('usuario');
-    if (!usuario) {
-        usuario = sessionStorage.getItem('usuario');
-        if (!usuario) {
-            document.querySelector('#usuario').addEventListener('click',function(e){
-                e.preventDefault();
-            });
-        }
-    }
-
-    const amigoSeleccionado = e.currentTarget.value;
-
-    let datosAmistad = [amigoSeleccionado, usuario];
-
-    const url = `../backend/amistades/aceptarAmigo.php`;
-    
-    fetch(url, {
-                method: 'POST',
-                body: datosAmistad,
-                headers:{'Content-Type': 'application/json'}
-            }
-    )
-        .then((response) => response.json())
-        .then(window.location.reload())
-        .catch(console.log);
 }
 
-function rechazarUsuario(e){
+function solicitudAmistad(e){
 
     var usuario = undefined;
 
@@ -214,7 +153,9 @@ function rechazarUsuario(e){
 
     let datosAmistad = [amigoSeleccionado, usuario];
 
-    const url = `../backend/amistades/rechazarUsuario.php`;
+    console.log(datosAmistad);
+
+    const url = `../backend/amistades/agregarAmigo.php`;
     
     fetch(url, {
                 method: 'POST',
